@@ -11,6 +11,7 @@
       <div class="navbar-nav">
         <a class="nav-link active" aria-current="page" href="Inicio">Inicio</a>
         <a class="nav-link" href="Contacto">Contacto</a>
+        <a class="nav-link" href="ListarCapacitaciones">Listar Capacitaciones</a>
         <a class="nav-link" href="Login">Login</a>
       </div>
     </div>
