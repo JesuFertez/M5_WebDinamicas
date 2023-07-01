@@ -16,7 +16,7 @@
 	<%@ include file='navbar.jsp'%>
 	<div class="container">
 		<main class="form-signin">
-			<form action="Ingreso" method="GET">
+			<form action="Ingreso" method="POST">
 				<h1 class="h3 mb-3 fw-normal">Por favor, ingrese</h1>
 
 				<div class="form-floating">

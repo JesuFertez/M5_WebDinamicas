@@ -1,3 +1,13 @@
+<%@page import="model.Usuario"%>
+<% //Se obtiene la sesion desde el request en el navbar ya que ahi se encuentran los link de navegacion
+	HttpSession sesion = request.getSession();
+	// aca se crea la variable ingreso que controla si se ingreso us y ps
+	boolean ingreso = false;
+	if(sesion.getAttribute("ingreso") != null) {
+		ingreso = (boolean) sesion.getAttribute("ingreso");		
+	}
+%>
+    
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <header>
@@ -10,8 +20,10 @@
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
       <div class="navbar-nav">
         <a class="nav-link active" aria-current="page" href="Inicio">Inicio</a>
-        <a class="nav-link" href="Contacto">Contacto</a>
-        <a class="nav-link" href="ListarCapacitaciones">Listar Capacitaciones</a>
+        <% if(ingreso) { %>
+        	<a class="nav-link" href="Contacto">Contacto</a>
+        	<a class="nav-link" href="ListarCapacitaciones">Listar Capacitaciones</a>
+        <% } %>
         <a class="nav-link" href="Login">Login</a>
       </div>
     </div>
