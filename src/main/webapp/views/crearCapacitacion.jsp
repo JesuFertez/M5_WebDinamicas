@@ -15,43 +15,51 @@
 </head>
 <body>
 
-	<%@ include file='navbar.jsp'%>
-	<div class="container" style="width: 25rem;">
-		<h1>Crear Capacitacion</h1>
-		<form action="CrearCapacitacion" method="post">
-			<div class="form-group">
-				<label for="identificador">ID:</label> <input type="number"
-					class="form-control" name="idCapacitacion" id="idCapacitacion"
-					required>
+	<%@ include file='navbar.jsp'%><div class="container d-flex justify-content-center align-items-center mt-1">
+	<div class="container d-flex justify-content-center align-items-center mt-4">
+		<div class="card" style="width: 50%;">
+			<div class="card-header bg-dark text-white">
+				<h2 class="card-title">Crear Capacitacion</h2>
 			</div>
-			<div class="mb-3">
-				<label for="rut">Rut Cliente:</label> <input type="number"
-					class="form-control" name="rutCliente" id="rutCliente" required>
+			<div class="card-body">
+				<form action="CrearCapacitacion" class="row" method="post">
+				  <div class="col-md-4 mb-3">
+						<label for="identificador" class="form-label">ID:</label>
+						<input type="number" class="form-control" name="idCapacitacion" id="idCapacitacion" required>
+				  </div>
+				  <div class="col-md-8 mb-3">
+						<label for="rut" class="form-label">Rut Cliente:</label>
+						<input type="number" class="form-control" name="rutCliente" id="rutCliente" required>
+				  </div>
+				  <div class="col-md-3 mb-3">
+						<label for="dia" class="form-label">Día:</label>
+						<input type="text" class="form-control" name="dia" id="dia" required>
+				  </div>
+				  <div class="col-md-3 mb-3">
+						<label for="hora" class="form-label">Hora (hh:mm):</label>
+						<input type="text" class="form-control" name="hora" id="hora" required>
+				  </div>
+					<div class="col-md-6">
+						<label for="lugar" class="form-label">Lugar:</label>
+						<input type="text" class="form-control" name="lugar" id="lugar" required>
+					</div>
+					<div class="col-md-6">
+						<label for="duracion" class="form-label">Duración:</label>
+						<input type="text" class="form-control" name="duracion" id="duracion" required>
+					</div>
+					<div class="col-md-6 ">
+						<label for="cantidad" class="form-label">Cantidad de Asistentes:</label>
+						<input type="number" class="form-control" name="cantidadAsistentes" id="cantidadAsistentes" required>
+					</div>
+					<div class="col-md-12">
+						<button type="submit" class="btn btn-secondary w-100 mt-4">Crear</button>
+					</div>
+				</form>
 			</div>
-			<div class="mb-3">
-				<label for="dia">Día:</label> <input type="text"
-					class="form-control" name="dia" id="dia" required>
-			</div>
-			<div class="mb-3">
-				<label for="hora">Hora (hh:mm):</label> <input type="text"
-					class="form-control" name="hora" id="hora" required>
-			</div>
-			<div class="mb-3">
-				<label for="lugar">Lugar:</label> <input type="text"
-					class="form-control" name="lugar" id="lugar" required>
-			</div>
-			<div class="mb-3">
-				<label for="duracion">Duración:</label> <input type="text"
-					class="form-control" name="duracion" id="duracion" required>
-			</div>
-			<div class="mb-3">
-				<label for="cantidad">Cantidad de Asistentes:</label> <input
-					type="number" class="form-control" name="cantidadAsistentes"
-					id="cantidadAsistentes" required>
-			</div>
-			<button type="submit" class="btn btn-primary">Crear</button>
-		</form>
+		</div>
 	</div>
+
+
 	<!-- JavaScript Bootstrap -->
 	<script
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"

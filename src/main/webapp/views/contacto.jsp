@@ -15,25 +15,37 @@
 <body>
 	<%@ include file='navbar.jsp'%>
 	<section>
-		<div class="container">
-			<h2>Formulario de Contacto</h2>
-			<form action="exito.jsp" method="post">
-				<div class="form-group">
-					<label for="nombre">Nombre:</label> <input type="text"
-						class="form-control" id="nombre" name="nombre" required>
+	<div class="container mt-4">
+		<div class="row justify-content-center">
+			<div class="col-lg-6 col-md-8">
+				<div class="card">
+					<div class="card-header bg-dark text-white">
+						<h2 class="card-title text-center">Formulario de Contacto</h2>
+					</div>
+					<div class="card-body">
+						<form action="exito.jsp" method="post">
+							<div class="mb-3">
+								<label for="nombre" class="form-label">Nombre:</label>
+								<input type="text" class="form-control" id="nombre" name="nombre" required>
+							</div>
+							<div class="mb-3">
+								<label for="email" class="form-label">Email:</label>
+								<input type="email" class="form-control" id="email" name="email" required>
+							</div>
+							<div class="mb-3">
+								<label for="mensaje" class="form-label">Mensaje:</label>
+								<textarea class="form-control" id="mensaje" name="mensaje" rows="5" required></textarea>
+							</div>
+							<div class="text-center">
+								<button type="submit" class="btn btn-secondary w-100">Enviar</button>
+							</div>
+						</form>
+					</div>
 				</div>
-				<div class="form-group">
-					<label for="email">Email:</label> <input type="email"
-						class="form-control" id="email" name="email" required>
-				</div>
-				<div class="form-group">
-					<label for="mensaje">Mensaje:</label>
-					<textarea class="form-control" id="mensaje" name="mensaje" rows="5"
-						required></textarea>
-				</div>
-				<button type="submit" class="btn btn-primary">Enviar</button>
-			</form>
+			</div>
 		</div>
+	</div>
+
 	</section>
 
 	<!-- JavaScript Bootstrap -->

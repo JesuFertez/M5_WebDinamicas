@@ -23,6 +23,7 @@
         <% if(ingreso) { %>
         	<a class="nav-link" href="Contacto">Contacto</a>
         	<a class="nav-link" href="ListarCapacitaciones">Listar Capacitaciones</a>
+        	<a class="nav-link" href="CrearCapacitacion">Crear Capacitacion</a>
         <% } %>
         <a class="nav-link" href="Login">Login</a>
       </div>
