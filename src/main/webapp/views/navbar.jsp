@@ -13,11 +13,10 @@
     
     <%@page import="model.Usuario"%>
 
-    
 <header>
 <nav class="navbar bg-dark  navbar-expand-lg bg-body-tertiary " data-bs-theme="dark">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#">WebDin·mica</a>
+    <a class="navbar-brand" href="#">WebDin√°mica</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -26,12 +25,12 @@
         <a class="nav-link active" aria-current="page" href="Inicio">Inicio</a>      
         <% if(ingreso) { %>
         	<a class="nav-link" href="Contacto">Contacto</a>
-        	<a class="nav-link" href="CrearCapacitacion">Crear CapacitaciÛn</a>
+        	<a class="nav-link" href="CrearCapacitacion">Crear Capacitaci√≥n</a>
         	<a class="nav-link" href="ListarCapacitaciones">Listar Capacitaciones</a>
         <% } %>
         <a class="nav-link" href="Login">Login</a>
          <% if(ingreso) { %>
-         <a style=text-align:right class="nav-link"  href="CerrarSession">Cerrar SesiÛn</a>
+         <a style=text-align:right class="nav-link"  href="CerrarSession">Cerrar Sesi√≥n</a>
         <% } %>
       </div>
     </div>
