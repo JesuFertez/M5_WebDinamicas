@@ -5,6 +5,8 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Éxito</title>
+<!-- CSS del proyecto -->
+	<link rel="stylesheet" href="../css/estilos.css">
 <!-- CSS Bootstrap -->
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
@@ -13,7 +15,10 @@
 	crossorigin="anonymous">
 </head>
 <body>
+	<!-- Incluyendo navbar menu -->
 	<%@ include file='navbar.jsp'%>
+	
+	<!-- Mensaje de exito -->
 	<div class="container">
 		<div class="alert alert-success mt-4">
 			<h4 class="alert-heading text-center fs-1">¡Éxito!</h4>

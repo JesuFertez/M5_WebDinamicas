@@ -13,7 +13,9 @@
     pageEncoding="ISO-8859-1"%>
     
     <%@page import="model.Usuario"%>
-
+<head>
+	<link rel="stylesheet" href="../css/estilos.css">
+</head>
 <header>
 <nav class="navbar bg-dark  navbar-expand-lg bg-body-tertiary " data-bs-theme="dark">
   <div class="container-fluid">
