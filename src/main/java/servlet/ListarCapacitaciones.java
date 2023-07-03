@@ -6,6 +6,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  * Servlet implementation class ListarCapacitaciones
@@ -29,7 +30,15 @@ public class ListarCapacitaciones extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		getServletContext().getRequestDispatcher("/views/listar-capacitaciones.jsp").forward(request, response);
+		//Se obtiene la sesion actual
+		HttpSession session = request.getSession();
+		//validacion de usuario logeado
+	    if (session != null && session.getAttribute("usuario") != null) {
+	    	getServletContext().getRequestDispatcher("/views/listar-capacitaciones.jsp").forward(request, response);
+	    } else {
+	    	//redireccionando al login
+	    	response.sendRedirect(request.getContextPath() + "/Login");
+	    }
 	}
 
 	/**
