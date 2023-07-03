@@ -35,11 +35,11 @@
 						<label for="dia" class="form-label">Día:</label>
 						<input type="text" class="form-control" name="dia" id="dia" required>
 				  </div>
-				  <div class="col-md-3 mb-3">
+				  <div class="col-md-4 mb-3">
 						<label for="hora" class="form-label">Hora (hh:mm):</label>
 						<input type="text" class="form-control" name="hora" id="hora" required>
 				  </div>
-					<div class="col-md-6">
+					<div class="col-md-5">
 						<label for="lugar" class="form-label">Lugar:</label>
 						<input type="text" class="form-control" name="lugar" id="lugar" required>
 					</div>
