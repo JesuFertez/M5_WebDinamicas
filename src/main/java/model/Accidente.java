@@ -1,88 +1,60 @@
 package model;
 
+import java.time.LocalDate;
+
 public class Accidente {
-	private int identificadorAccidente;
-	private String rutCliente;
-	private String dia;
-	private String hora;
-	private String lugar;
-	private String origen;
-	private String consecuencias;
-	
+	private int id;
+	private int cliente_id;
+	private LocalDate fecha_accidente;
+	private String detalle;
+
 	public Accidente() {
 	}
 
-	public Accidente(int identificadorAccidente, String rutCliente, String dia, String hora, String lugar,
-			String origen, String consecuencias) {
-		this.identificadorAccidente = identificadorAccidente;
-		this.rutCliente = rutCliente;
-		this.dia = dia;
-		this.hora = hora;
-		this.lugar = lugar;
-		this.origen = origen;
-		this.consecuencias = consecuencias;
+	public Accidente(int id, int cliente_id, LocalDate fecha_accidente, String detalle) {
+		super();
+		this.id = id;
+		this.cliente_id = cliente_id;
+		this.fecha_accidente = fecha_accidente;
+		this.detalle = detalle;
 	}
 
-	public int getIdentificadorAccidente() {
-		return identificadorAccidente;
+	public int getId() {
+		return id;
 	}
 
-	public void setIdentificadorAccidente(int identificadorAccidente) {
-		this.identificadorAccidente = identificadorAccidente;
+	public void setId(int id) {
+		this.id = id;
 	}
 
-	public String getRutCliente() {
-		return rutCliente;
+	public int getCliente_id() {
+		return cliente_id;
 	}
 
-	public void setRutCliente(String rutCliente) {
-		this.rutCliente = rutCliente;
+	public void setCliente_id(int cliente_id) {
+		this.cliente_id = cliente_id;
 	}
 
-	public String getDia() {
-		return dia;
+	public LocalDate getFecha_accidente() {
+		return fecha_accidente;
 	}
 
-	public void setDia(String dia) {
-		this.dia = dia;
+	public void setFecha_accidente(LocalDate fecha_accidente) {
+		this.fecha_accidente = fecha_accidente;
 	}
 
-	public String getHora() {
-		return hora;
+	public String getDetalle() {
+		return detalle;
 	}
 
-	public void setHora(String hora) {
-		this.hora = hora;
-	}
-
-	public String getLugar() {
-		return lugar;
-	}
-
-	public void setLugar(String lugar) {
-		this.lugar = lugar;
-	}
-
-	public String getOrigen() {
-		return origen;
-	}
-
-	public void setOrigen(String origen) {
-		this.origen = origen;
-	}
-
-	public String getConsecuencias() {
-		return consecuencias;
-	}
-
-	public void setConsecuencias(String consecuencias) {
-		this.consecuencias = consecuencias;
+	public void setDetalle(String detalle) {
+		this.detalle = detalle;
 	}
 
 	@Override
 	public String toString() {
-		return "Accidente [identificadorAccidente=" + identificadorAccidente + ", rutCliente=" + rutCliente + ", dia="
-				+ dia + ", hora=" + hora + ", lugar=" + lugar + ", origen=" + origen + ", consecuencias="
-				+ consecuencias + "]";
+		return "Accidente [id=" + id + ", cliente_id=" + cliente_id + ", fecha_accidente=" + fecha_accidente
+				+ ", detalle=" + detalle + "]";
 	}
+
 }

@@ -7,13 +7,13 @@ public class Profesional extends Usuario {
 	private String titulo;
 	private LocalDate fechaIngreso;
 
-	public Profesional(String nombre, LocalDate fechaNacimiento, int run, String titulo, LocalDate fechaIngreso) {
-		super(nombre, fechaNacimiento, run);
-		this.titulo = titulo;
-		this.fechaIngreso = fechaIngreso;
+	public Profesional() {
 	}
 
-	public Profesional() {
+	public Profesional(int id, String nombreUsuario, String titulo, LocalDate fechaIngreso) {
+		super(id, nombreUsuario, TipoUsuario.Profesional);
+		this.titulo = titulo;
+		this.fechaIngreso = fechaIngreso;
 	}
 
 	public String getTitulo() {
@@ -34,22 +34,7 @@ public class Profesional extends Usuario {
 
 	@Override
 	public String toString() {
-		return super.toString() + "\n t�tulo: " + titulo + "\n fecha de ingreso:" + fechaIngreso;
+		return super.toString() + " [titulo=" + titulo + ", fechaIngreso=" + fechaIngreso + "]";
 	}
 
-	public void validarTitulo(String titulo) {
-		if (titulo.length() >= 10 && titulo.length() <= 50) {
-			this.titulo = titulo;
-		} else {
-			System.out.println("El t�tulo debe tener entre 10 y 50 caracteres...");
-		}
-	}
-
-	public int analizarUsuario() {
-		super.analizarUsuario();
-		System.out.println("T�tulo: " + titulo);
-		System.out.println("Fecha de ingreso: " + fechaIngreso);
-
-		return super.getRun();
-	}
 }
