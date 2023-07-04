@@ -30,32 +30,16 @@
 				<form action="CrearCapacitacion" class="row" method="post">
 				  <div class="col-md-4 mb-3">
 						<label for="identificador" class="form-label">ID:</label>
-						<input type="number" class="form-control" name="idCapacitacion" id="idCapacitacion" required>
+						<input type="number" class="form-control" name="idCapacitacion" required>
 				  </div>
 				  <div class="col-md-8 mb-3">
-						<label for="rut" class="form-label">Rut Cliente:</label>
-						<input type="number" class="form-control" name="rutCliente" id="rutCliente" required>
+						<label for="rut" class="form-label">Nombre</label>
+						<input type="text" class="form-control" name="nombre" required>
 				  </div>
-				  <div class="col-md-3 mb-3">
-						<label for="dia" class="form-label">Día:</label>
-						<input type="text" class="form-control" name="dia" id="dia" required>
+				  <div class="col-md-12">
+						<label for="dia" class="form-label">Detalle</label>
+						<textarea class="form-control" name="detalle" rows="3" required></textarea>
 				  </div>
-				  <div class="col-md-4 mb-3">
-						<label for="hora" class="form-label">Hora (hh:mm):</label>
-						<input type="text" class="form-control" name="hora" id="hora" required>
-				  </div>
-					<div class="col-md-5">
-						<label for="lugar" class="form-label">Lugar:</label>
-						<input type="text" class="form-control" name="lugar" id="lugar" required>
-					</div>
-					<div class="col-md-6">
-						<label for="duracion" class="form-label">Duración:</label>
-						<input type="text" class="form-control" name="duracion" id="duracion" required>
-					</div>
-					<div class="col-md-6 ">
-						<label for="cantidad" class="form-label">Cantidad de Asistentes:</label>
-						<input type="number" class="form-control" name="cantidadAsistentes" id="cantidadAsistentes" required>
-					</div>
 					<div class="col-md-12">
 						<button type="submit" class="btn btn-secondary w-100 mt-4">Crear</button>
 					</div>

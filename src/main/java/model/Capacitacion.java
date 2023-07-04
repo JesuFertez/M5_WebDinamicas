@@ -1,91 +1,47 @@
 package model;
 
 public class Capacitacion {
-	private int identificador;
-	private int rutCliente;
-	private String dia;
-	private String hora;
-	private String lugar;
-	private String duracion;
-	private int cantidadAsistentes;
+	private int id;
+	private String nombre;
+	private String detalle;
 
-	public Capacitacion() {}
-
-	public Capacitacion(int identificador, int rutCliente, String dia, String hora, String lugar, String duracion,
-			int cantidadAsistentes) {
-		this.identificador = identificador;
-		this.rutCliente = rutCliente;
-		this.dia = dia;
-		this.hora = hora;
-		this.lugar = lugar;
-		this.duracion = duracion;
-		this.cantidadAsistentes = cantidadAsistentes;
+	public Capacitacion() {
 	}
 
-	public int getIdentificador() {
-		return identificador;
+	public Capacitacion(int id, String nombre, String detalle) {
+		super();
+		this.id = id;
+		this.nombre = nombre;
+		this.detalle = detalle;
 	}
 
-	public void setIdentificador(int identificador) {
-		this.identificador = identificador;
+	public int getId() {
+		return id;
 	}
 
-	public int getRutCliente() {
-		return rutCliente;
+	public void setId(int id) {
+		this.id = id;
 	}
 
-	public void setRutCliente(int rutCliente) {
-		this.rutCliente = rutCliente;
+	public String getNombre() {
+		return nombre;
 	}
 
-	public String getDia() {
-		return dia;
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
 	}
 
-	public void setDia(String dia) {
-		this.dia = dia;
+	public String getDetalle() {
+		return detalle;
 	}
 
-	public String getHora() {
-		return hora;
-	}
-
-	public void setHora(String hora) {
-		this.hora = hora;
-	}
-
-	public String getLugar() {
-		return lugar;
-	}
-
-	public void setLugar(String lugar) {
-		this.lugar = lugar;
-	}
-
-	public String getDuracion() {
-		return duracion;
-	}
-
-	public void setDuracion(String duracion) {
-		this.duracion = duracion;
-	}
-
-	public int getCantidadAsistentes() {
-		return cantidadAsistentes;
-	}
-
-	public void setCantidadAsistentes(int cantidadAsistentes) {
-		this.cantidadAsistentes = cantidadAsistentes;
+	public void setDetalle(String detalle) {
+		this.detalle = detalle;
 	}
 
 	@Override
 	public String toString() {
-		return "Capacitacion: \n Identificador: " + identificador + " \n RutCliente: " + rutCliente + "\n Dia=" + dia
-				+ "\n Hora: " + hora + "\n Lugar: " + lugar + "\n Duracion: " + duracion + "\n Cantidad de Asistentes: "
-				+ cantidadAsistentes;
+		return "Capacitacion [id=" + id + ", nombre=" + nombre + ", detalle=" + detalle + "]";
 	}
-	
-	public String mostrarDetalle() {
-		return "La capacitación será en "+ lugar + " a las " + hora + " del día " + dia + ", y durará " + duracion + " minutos";
-	}
+
 }

@@ -49,15 +49,11 @@ public class CrearCapacitacion extends HttpServlet {
 		
 		//Obteniendo parametros del formulario
 		int id = Integer.valueOf(request.getParameter("idCapacitacion"));
-		int rutCliente = Integer.valueOf(request.getParameter("rutCliente"));
-		String dia = request.getParameter("dia");
-		String hora = request.getParameter("hora");
-		String lugar = request.getParameter("lugar");
-		String duracion = request.getParameter("duracion");
-		int cantidadAsistentes = Integer.valueOf(request.getParameter("cantidadAsistentes"));
+		String nombre = request.getParameter("dia");
+		String detalle = request.getParameter("hora");
 		
 		//Creando nueva capacitacion
-		Capacitacion capacitacion = new Capacitacion(id,rutCliente,dia,hora,lugar,duracion,cantidadAsistentes);
+		Capacitacion capacitacion = new Capacitacion(id,nombre,detalle);
 		
 		// Establecer el mensaje de éxito como atributo de solicitud
 		request.setAttribute("mensaje", "La Capacitacion se ha agregado correctamente.");
