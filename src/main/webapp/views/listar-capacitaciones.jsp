@@ -31,25 +31,17 @@
 					<tr>
 					<!-- Capacitacion(int identificador, int rutCliente, String dia, String hora, String lugar, String duracion,int cantidadAsistentes) -->
 						<th>Id</th>
-						<th>Rut del Cliente</th>
-						<th>Día</th>
-						<th>Hora</th>
-						<th>Lugar</th>
-						<th>Duración</th>
-						<th>Cantidad de asistentes</th>
+						<th>Nombre</th>
+						<th>Detalle</th>
 					</tr>
 				</thead>
 				<tbody>
 					<!-- Ciclo forEach con JSTL para imprimir datos de la lista -->
 					<c:forEach var="cap" items="${listaCapacitaciones}">
 					<tr>
-						<td><c:out value="${cap.getIdentificador()}"></c:out></td>
-						<td><c:out value="${cap.getRutCliente()}"></c:out></td>
-						<td><c:out value="${cap.getDia()}"></c:out></td>
-						<td><c:out value="${cap.getHora()}"></c:out></td>
-						<td><c:out value="${cap.getLugar()}"></c:out></td>
-						<td><c:out value="${cap.getDuracion()}"></c:out></td>
-						<td><c:out value="${cap.getCantidadAsistentes()}"></c:out></td>
+						<td><c:out value="${cap.getId()}"></c:out></td>
+						<td><c:out value="${cap.getNombre()}"></c:out></td>
+						<td><c:out value="${cap.getDetalle()}"></c:out></td>
 					</tr>
 					</c:forEach>
 					

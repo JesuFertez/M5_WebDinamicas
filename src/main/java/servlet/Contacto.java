@@ -38,13 +38,15 @@ public class Contacto extends HttpServlet {
 	        // código para desplegar el diseño respectivo
 	    }
 	}
-
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		doGet(request, response);
+		//Mensaje de exito
+		request.setAttribute("mensaje", "Mensaje recibido, te contactaremos por el correo proporcionado.");
+		//Redireccionando a la pagina de exito
+		getServletContext().getRequestDispatcher("/views/exito.jsp").forward(request, response);
 	}
 
 }

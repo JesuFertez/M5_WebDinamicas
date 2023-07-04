@@ -28,7 +28,7 @@
 						<h2 class="card-title text-center">Formulario de Contacto</h2>
 					</div>
 					<div class="card-body">
-						<form action="exito.jsp" method="post">
+						<form action="Contacto" method="post">
 							<div class="mb-3">
 								<label for="nombre" class="form-label">Nombre:</label>
 								<input type="text" class="form-control" id="nombre" name="nombre" required>
