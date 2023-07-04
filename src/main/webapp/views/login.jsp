@@ -5,6 +5,8 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Iniciar Sesión</title>
+<!-- CSS del proyecto -->
+	<link rel="stylesheet" href="../css/estilos.css">
 <!-- CSS Bootstrap -->
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
@@ -13,8 +15,10 @@
 	crossorigin="anonymous">
 </head>
 <body>
+	<!-- Incluyendo navbar -->
 	<%@ include file='navbar.jsp'%>
 	<div class="container mt-4">
+	<!-- Fomulario de login -->
 		<div class="row justify-content-center">
 			<div class="col-lg-4 col-md-6">
 				<div class="card">

@@ -5,6 +5,8 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Pagina de Inicio</title>
+<!-- CSS del proyecto -->
+	<link rel="stylesheet" href="../css/estilos.css">
 <!-- CSS Bootstrap -->
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
@@ -13,7 +15,9 @@
 	crossorigin="anonymous">
 </head>
 <body>
+	<!-- Incluyendo navbar menu -->
 	<%@ include file='navbar.jsp'%>
+	<!-- Pagina de inicio -->
 	<div class="container">
 		<section>
 			<h1>¡Bienvenido a nuestro sitio web!</h1>

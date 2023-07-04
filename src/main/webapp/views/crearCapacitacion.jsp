@@ -5,6 +5,8 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Crear Capacitacion</title>
+<!-- CSS del proyecto -->
+	<link rel="stylesheet" href="../css/estilos.css">
 <!-- CSS Bootstrap -->
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
@@ -15,8 +17,11 @@
 </head>
 <body>
 
-	<%@ include file='navbar.jsp'%><div class="container d-flex justify-content-center align-items-center mt-1">
+	<!-- Incluyendo navbar menu -->
+	<%@ include file='navbar.jsp'%>
 	<div class="container d-flex justify-content-center align-items-center mt-4">
+	
+	<!-- Formulario para crear capacitacion -->
 		<div class="card" style="width: 50%;">
 			<div class="card-header bg-dark text-white">
 				<h2 class="card-title">Crear Capacitacion</h2>
