@@ -1,24 +1,24 @@
-package servlet;
+package controlador;
 
 import java.io.IOException;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 /**
- * Servlet implementation class CerrarSession
+ * Servlet implementation class Login
  */
-@WebServlet("/CerrarSession")
-public class CerrarSession extends HttpServlet {
+@WebServlet("/Login")
+public class Login extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public CerrarSession() {
+    public Login() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -28,8 +28,6 @@ public class CerrarSession extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		HttpSession session = request.getSession();
-		session.invalidate();
 		getServletContext().getRequestDispatcher("/views/login.jsp").forward(request, response);
 	}
 
