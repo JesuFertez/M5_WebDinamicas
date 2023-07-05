@@ -42,7 +42,7 @@ public class ListarCapacitaciones extends HttpServlet {
 	    	List<Capacitacion> listaCapacitaciones= new ArrayList<>();
 	    	/*Capacitacion(int id, String nombre, String detalle, int rutCliente, String dia, String hora, String lugar,
 	    			String duracion, int cantidadAsistentes)*/
-	    	Capacitacion cap1 = new Capacitacion(1, "Prevencion de Riesgos", "Identificando y preveniendo riesgos en el ambiente laboral", 123456789, "2023-07-05", "09:00", "Sala A", "2 horas", 20);
+	    	Capacitacion cap1 = new Capacitacion(1, "Prevencion de Riesgos", "Identificando y previniendo riesgos en el ambiente laboral", 123456789, "2023-07-05", "09:00", "Sala A", "2 horas", 20);
 
 	    	Capacitacion cap2 = new Capacitacion(2, "Manipulación del Extintor", "Uso correcto, curso práctico", 987654321, "2023-07-10", "14:00", "Sala B", "3 horas", 15);
 
