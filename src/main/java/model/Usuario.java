@@ -3,15 +3,17 @@ package model;
 public class Usuario {
 	
 	private int id;
-	private String nombre;
+	private String nombreUsuario;
+	private String contraseña;
 	private TipoUsuario tipo;
 	
 	public Usuario() {}
 	
-	public Usuario(int id, String nombre, TipoUsuario tipo) {
+	public Usuario(int id, String nombreUsuario, String contraseña, TipoUsuario tipo) {
 		super();
 		this.id = id;
-		this.nombre = nombre;
+		this.nombreUsuario = nombreUsuario;
+		this.contraseña= contraseña;
 		this.tipo = tipo;
 	}
 	
@@ -22,11 +24,20 @@ public class Usuario {
 		this.id = id;
 	}
 	public String getNombre() {
-		return nombre;
+		return nombreUsuario;
 	}
 	public void setNombre(String nombre) {
-		this.nombre = nombre;
+		this.nombreUsuario = nombre;
 	}
+	
+	public String getContraseña() {
+		return contraseña;
+	}
+
+	public void setContraseña(String contraseña) {
+		this.contraseña = contraseña;
+	}
+
 	public TipoUsuario getTipo() {
 		return tipo;
 	}
@@ -36,7 +47,7 @@ public class Usuario {
 
 	@Override
 	public String toString() {
-		return "Usuario [id=" + id + ", nombre=" + nombre + ", tipo=" + tipo + "]";
+		return "Usuario [id=" + id + ", nombreUsuario=" + nombreUsuario + ", tipo=" + tipo + "]";
 	}
 	
 }

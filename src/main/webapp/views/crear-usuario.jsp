@@ -19,25 +19,29 @@
 	<%@ include file='navbar.jsp'%>
 	<div class="container d-flex justify-content-center align-items-center mt-4">
 	
-	<!-- Formulario para crear capacitacion -->
+	<!-- Formulario para crear un nuevo usuario -->
 		<div class="card" style="width: 50%;">
 			<div class="card-header bg-dark text-white">
-				<h2 class="card-title">Crear Usuario</h2>
+				<h2 class="card-title d-flex justify-content-center">Crear Usuario</h2>
 			</div>
 			<div class="card-body">
 				<form action="CrearUsuario" class="row" method="post">
-				  <div class="col-md-4 mb-3">
-						<label for="identificador" class="form-label">ID:</label>
-						<input type="number" class="form-control" name="id" required>
-				  </div>
-				  <div class="col-md-8 mb-3">
-						<label for="rut" class="form-label">Nombre</label>
+				  <div class="col-md-6 mb-3">
+						<label for="nombre" class="form-label">Nombre</label>
 						<input type="text" class="form-control" name="nombre" required>
 				  </div>
-				  <div class="col-md-8 mb-3">
-						<label for="dia" class="form-label">Tipo</label>
-						<input type="text" class="form-control" name="tipo" required>
+				  <div class="col-md-6 mb-3">
+						<label for="contraseña" class="form-label">Contraseña</label>
+						<input type="text" class="form-control" name="contraseña" required>
 				  </div>
+					<div class="col-md-12 mb-3">
+					    <label for="tipoLbl" class="form-label">Tipo</label>
+					    <select class="form-control" name="tipo" required>
+					        <option value="Cliente">Cliente</option>
+					        <option value="Administrativo">Administrativo</option>
+					        <option value="Profesional">Profesional</option>
+					    </select>
+					</div>
 					<div class="col-md-12">
 						<button type="submit" class="btn btn-secondary w-100 mt-4">Crear</button>
 					</div>

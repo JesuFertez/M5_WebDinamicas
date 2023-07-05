@@ -3,15 +3,17 @@ package model;
 import java.time.LocalDate;
 
 public class Administrativo extends Usuario {
-
-	String area;
-	String experienciaPrevia;
+	
+	private String nombre;
+	private String area;
+	private String experienciaPrevia;
 
 	public Administrativo() {
 	}
 
-	public Administrativo(int id, String nombreUsuario, String area, String experienciaPrevia) {
-		super(id, nombreUsuario, TipoUsuario.Administrativo);
+	public Administrativo(int id, String nombreUsuario,String contraseña,String nombre, String area, String experienciaPrevia) {
+		super(id, nombreUsuario,contraseña, TipoUsuario.Administrativo);
+		this.nombre= nombre;
 		this.area = area;
 		this.experienciaPrevia = experienciaPrevia;
 	}
@@ -34,7 +36,9 @@ public class Administrativo extends Usuario {
 
 	@Override
 	public String toString() {
-		return super.toString() + " [area=" + area + ", experienciaPrevia=" + experienciaPrevia + "]";
+		return super.toString() +" [nombre=" + nombre + ", area=" + area + ", experienciaPrevia=" + experienciaPrevia + "]";
 	}
+
+	
 
 }

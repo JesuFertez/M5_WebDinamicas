@@ -45,7 +45,15 @@ public class CrearUsuario extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		doGet(request, response);
+		if(request.getParameter("contraseña") != null) {
+			// Establecer el mensaje de éxito como atributo de solicitud
+			request.setAttribute("mensaje", "Usuario creado correctamente");
+			
+			//Redireccionar a web de exito
+			getServletContext().getRequestDispatcher("/views/exito.jsp").forward(request, response);
+		}else {
+			getServletContext().getRequestDispatcher("/views/listado-usuarios.jsp").forward(request, response);
+		}
 	}
 
 }

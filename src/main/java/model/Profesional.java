@@ -4,16 +4,27 @@ import java.time.LocalDate;
 
 public class Profesional extends Usuario {
 
+	private String nombre;
 	private String titulo;
 	private LocalDate fechaIngreso;
 
 	public Profesional() {
 	}
 
-	public Profesional(int id, String nombreUsuario, String titulo, LocalDate fechaIngreso) {
-		super(id, nombreUsuario, TipoUsuario.Profesional);
+	public Profesional(int id, String nombreUsuario, String contraseña, String nombre, String titulo,
+			LocalDate fechaIngreso) {
+		super(id, nombreUsuario, contraseña, TipoUsuario.Profesional);
+		this.nombre = nombre;
 		this.titulo = titulo;
 		this.fechaIngreso = fechaIngreso;
+	}
+	
+	public String getNombre() {
+		return nombre;
+	}
+
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
 	}
 
 	public String getTitulo() {
@@ -34,7 +45,8 @@ public class Profesional extends Usuario {
 
 	@Override
 	public String toString() {
-		return super.toString() + " [titulo=" + titulo + ", fechaIngreso=" + fechaIngreso + "]";
+		return super.toString()+" [nombre=" + nombre + ", titulo=" + titulo + ", fechaIngreso=" + fechaIngreso + "]";
 	}
+	
 
 }
