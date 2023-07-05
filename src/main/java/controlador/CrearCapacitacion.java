@@ -1,4 +1,4 @@
-package servlet;
+package controlador;
 import model.Capacitacion;
 
 import java.io.IOException;

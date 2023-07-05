@@ -1,24 +1,24 @@
-package servlet;
+package controlador;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
- * Servlet implementation class Inicio
+ * Servlet implementation class CrearUsuario
  */
-@WebServlet("/Inicio")
-public class Inicio extends HttpServlet {
+@WebServlet("/CrearUsuario")
+public class CrearUsuario extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public Inicio() {
+    public CrearUsuario() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -28,7 +28,16 @@ public class Inicio extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		getServletContext().getRequestDispatcher("/views/index.jsp").forward(request, response);
+		
+		//Se obtiene la sesion actual
+				HttpSession session = request.getSession();
+				//validacion de usuario logeado
+			    if (session != null && session.getAttribute("usuario") != null) {
+					getServletContext().getRequestDispatcher("/views/crear-usuario.jsp").forward(request, response);
+			    } else {
+			    	//redireccionando al login
+			    	response.sendRedirect(request.getContextPath() + "/Login");
+			    }
 	}
 
 	/**

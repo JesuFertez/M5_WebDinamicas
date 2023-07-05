@@ -31,6 +31,8 @@
         	<a class="nav-link" href="Contacto">Contacto</a>
         	<a class="nav-link" href="CrearCapacitacion">Crear Capacitación</a>
         	<a class="nav-link" href="ListarCapacitaciones">Listar Capacitaciones</a>
+        	<a class="nav-link" href="CrearUsuario">Crear Usuario</a>
+        	<a class="nav-link" href="ListadoUsuarios">Listar Usuarios</a>
         <% } else { %>
         <a class="nav-link" href="Login">Login</a>
         <% } %>
