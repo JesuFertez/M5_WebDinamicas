@@ -29,10 +29,24 @@
         <a class="nav-link active" aria-current="page" href="Inicio">Inicio</a>      
         <% if(ingreso) { %>
         	<a class="nav-link" href="Contacto">Contacto</a>
-        	<a class="nav-link" href="CrearCapacitacion">Crear Capacitación</a>
-        	<a class="nav-link" href="ListarCapacitaciones">Listar Capacitaciones</a>
-        	<a class="nav-link" href="CrearUsuario">Crear Usuario</a>
-        	<a class="nav-link" href="ListadoUsuarios">Listar Usuarios</a>
+	         <div class="nav-item dropdown">
+	           	<a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+	           		Crear
+	           	</a>
+	           	<ul class="dropdown-menu">
+	            	 <li><a class="nav-link" href="CrearCapacitacion">Crear Capacitación</a></li>
+	            	 <li><a class="nav-link" href="CrearUsuario">Crear Usuario</a></li>
+	           	</ul>
+	         </div>
+	         <div class="nav-item dropdown">
+	           	<a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+	           		Listar
+	           	</a>
+	           	<ul class="dropdown-menu">
+	            	 <li><a class="dropdown-item"  href="ListarCapacitaciones">Listar Capacitaciones</a></li>
+	            	 <li><a class="dropdown-item"  href="ListadoUsuarios">Listar Usuarios</a></li>
+	           	</ul>
+	         </div>
         <% } else { %>
         <a class="nav-link" href="Login">Login</a>
         <% } %>
@@ -40,7 +54,7 @@
          <div class="vr"></div>
          <div class="nav-item dropdown">
            	<a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            	<%=nombreUsuario %>
+            	Usuario <%=nombreUsuario %>
            	</a>
            	<ul class="dropdown-menu">
             	 <li><a class="dropdown-item" href="CerrarSession">Cerrar Sesión</a></li>

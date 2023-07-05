@@ -47,13 +47,22 @@ public class CrearCapacitacion extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		
-		//Obteniendo parametros del formulario
-		int id = Integer.valueOf(request.getParameter("idCapacitacion"));
-		String nombre = request.getParameter("dia");
-		String detalle = request.getParameter("hora");
-		
-		//Creando nueva capacitacion
-		Capacitacion capacitacion = new Capacitacion(id,nombre,detalle);
+		try {
+			//Obteniendo parametros del formulario
+			int id = 1; //en un futuro la base de datos asignará el id
+			String nombre = request.getParameter("dia");
+			String detalle = request.getParameter("hora");
+	        int rutCliente = Integer.valueOf(request.getParameter("rutCliente"));
+	        String dia = request.getParameter("dia");
+	        String hora = request.getParameter("hora");
+	        String lugar = request.getParameter("lugar");
+	        String duracion = request.getParameter("duracion");
+	        int cantidadAsistentes = Integer.valueOf(request.getParameter("cantidadAsistentes"));
+			//Creando nueva capacitacion
+			Capacitacion capacitacion = new Capacitacion(id,nombre,detalle,rutCliente,dia,hora,lugar,duracion,cantidadAsistentes);
+		} catch (Exception e) {
+			System.out.println("Error en CrearCapacitacion Servlet: "+e);
+		}
 		
 		// Establecer el mensaje de éxito como atributo de solicitud
 		request.setAttribute("mensaje", "La Capacitacion se ha agregado correctamente.");
