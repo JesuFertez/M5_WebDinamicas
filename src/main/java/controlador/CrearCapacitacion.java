@@ -50,8 +50,8 @@ public class CrearCapacitacion extends HttpServlet {
 		try {
 			//Obteniendo parametros del formulario
 			int id = 1; //en un futuro la base de datos asignará el id
-			String nombre = request.getParameter("dia");
-			String detalle = request.getParameter("hora");
+			String nombre = request.getParameter("nombre");
+			String detalle = request.getParameter("detalle");
 	        int rutCliente = Integer.valueOf(request.getParameter("rutCliente"));
 	        String dia = request.getParameter("dia");
 	        String hora = request.getParameter("hora");
