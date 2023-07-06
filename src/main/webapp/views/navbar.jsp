@@ -62,8 +62,8 @@
 		            	 </li>
 		           	</ul>
 		    	</li>
-		    	<li class="nav-item dropdown ms-2 ${navItem == 'Listar' ? 'active' : ''}">
-		    		<a class="nav-link dropdown-toggle"
+		    	<li class="nav-item dropdown ms-2">
+		    		<a class="nav-link dropdown-toggle ${navItem == 'Listar' ? 'active' : ''}"
 		    		id="navbarDropdown" role="button" data-bs-toggle="dropdown"  href="#">
 		    		<i class="bi bi-card-list"></i>
 		    		   Listar ${navText == 'Capacitaciones' ? 'Capacitaciones' : ''}
