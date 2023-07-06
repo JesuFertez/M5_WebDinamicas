@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -18,7 +19,10 @@
 <body>
 
 	<!-- Incluyendo navbar menu -->
+	<c:set var="navItem" value="Crear" /> <!-- Menu activo -->
+	<c:set var="navText" value="Capacitacion"/> <!-- Texto Crear -->
 	<%@ include file='navbar.jsp'%>
+	
 	<div class="container d-flex justify-content-center align-items-center mt-4">
 	
 	<!-- Formulario para crear capacitación -->
@@ -27,7 +31,7 @@
 	    <h2 class="card-title d-flex justify-content-center">Crear Capacitación</h2>
 	  </div>
 	  <div class="card-body">
-	    <form action="CrearCapacitacion" class="row" method="post">
+	    <form action="AgregarCapacitacion" class="row" method="post">
 	      <div class="col-md-6 mb-2">
 	        <label for="nombre" class="form-label">Nombre Capacitación</label>
 	        <input type="text" class="form-control" name="nombre" required>
@@ -58,7 +62,7 @@
 	      </div>
 			<div class="col-md-12 m3-2">
 				<label for="detalle" class="form-label">Detalle</label>
-				<textarea class="form-control" id="detalle" name="mensaje" rows="5" required></textarea>
+				<textarea class="form-control" id="detalle" name="detalle" rows="5" required></textarea>
 			</div>
 	      <div class="col-md-12">
 	        <button type="submit" class="btn btn-secondary w-100 mt-4">Crear</button>
