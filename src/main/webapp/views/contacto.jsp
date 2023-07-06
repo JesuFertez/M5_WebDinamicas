@@ -16,7 +16,7 @@
 	crossorigin="anonymous">
 </head>
 <body>
-	<!-- Formulario para crear capacitacion -->
+	<!-- Incluyendo navbar menu -->
 	<c:set var="navItem" value="Contacto" /> <!-- Menu activo -->
 	<%@ include file='navbar.jsp'%>
 	

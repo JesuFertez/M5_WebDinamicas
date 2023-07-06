@@ -16,6 +16,7 @@
 	crossorigin="anonymous">
 </head>
 <body>
+
 	<!-- Incluyendo navbar menu -->
 	<%@ include file='navbar.jsp'%>
 	

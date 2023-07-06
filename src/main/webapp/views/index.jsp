@@ -16,6 +16,7 @@
 	crossorigin="anonymous">
 </head>
 <body>
+
 	<!-- Incluyendo navbar menu -->
 	<c:set var="navItem" value="Inicio" /> <!-- Menu activo -->
 	<%@ include file='navbar.jsp'%>

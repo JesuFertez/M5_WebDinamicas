@@ -16,6 +16,7 @@
 	crossorigin="anonymous">
 </head>
 <body>
+
 	<!-- Incluyendo navbar menu -->
 	<c:set var="navItem" value="Listar" /> <!-- Menu activo -->
 	<c:set var="navText" value="Usuarios"/> <!-- Texto Listar -->

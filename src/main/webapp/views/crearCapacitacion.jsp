@@ -17,7 +17,6 @@
 
 </head>
 <body>
-
 	<!-- Incluyendo navbar menu -->
 	<c:set var="navItem" value="Crear" /> <!-- Menu activo -->
 	<c:set var="navText" value="Capacitacion"/> <!-- Texto Crear -->

@@ -15,6 +15,7 @@
 <!-- Variables JSTL -->
 <c:set var="nombreUsuario" value="${sessionScope.usuario}" />
 <c:set var="ingreso" value="${not empty sessionScope.ingreso and sessionScope.ingreso}" />
+
 <!-- Navbar del sitio -->
 <nav class="navbar bg-dark  navbar-expand-lg bg-body-tertiary " data-bs-theme="dark">
   <div class="container-fluid">	
