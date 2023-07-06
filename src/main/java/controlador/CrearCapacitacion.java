@@ -9,12 +9,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import implementacion.CapacitacionDAO;
+import interfaces.ICapacitacionDAO;
+
 /**
  * Servlet implementation class CrearCapacitacion
  */
 @WebServlet("/CrearCapacitacion")
 public class CrearCapacitacion extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	private ICapacitacionDAO capacitacionDAO = new CapacitacionDAO();
        
     /**
      * @see HttpServlet#HttpServlet()
@@ -46,7 +50,7 @@ public class CrearCapacitacion extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		
+		System.out.println("hjklkjhg");
 		try {
 			//Obteniendo parametros del formulario
 			int id = 1; //en un futuro la base de datos asignará el id
@@ -60,6 +64,9 @@ public class CrearCapacitacion extends HttpServlet {
 	        int cantidadAsistentes = Integer.valueOf(request.getParameter("cantidadAsistentes"));
 			//Creando nueva capacitacion
 			Capacitacion capacitacion = new Capacitacion(id,nombre,detalle,rutCliente,dia,hora,lugar,duracion,cantidadAsistentes);
+			capacitacionDAO.agregarCapacitacion(capacitacion);
+			System.out.println("Capacitacion agregada");
+			System.out.println(capacitacion.toString());
 		} catch (Exception e) {
 			System.out.println("Error en CrearCapacitacion Servlet: "+e);
 		}
