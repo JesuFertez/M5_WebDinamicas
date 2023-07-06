@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,10 +16,13 @@
 	crossorigin="anonymous">
 </head>
 <body>
+
 <!-- Incluyendo navbar menu -->
+	<c:set var="navItem" value="Crear" /> <!-- Menu activo -->
+	<c:set var="navText" value="Usuario"/> <!-- Texto Crear -->
 	<%@ include file='navbar.jsp'%>
-	<div class="container d-flex justify-content-center align-items-center mt-4">
 	
+	<div class="container d-flex justify-content-center align-items-center mt-4">
 	<!-- Formulario para crear un nuevo usuario -->
 		<div class="card" style="width: 50%;">
 			<div class="card-header bg-dark text-white">

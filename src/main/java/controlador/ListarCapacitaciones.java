@@ -37,15 +37,18 @@ public class ListarCapacitaciones extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		System.out.println("cargo lista cap");
 		//Se obtiene la sesion actual
 		HttpSession session = request.getSession();
 		//validacion de usuario logeado
 	    if (session != null && session.getAttribute("usuario") != null) {
-	    	List<Capacitacion> listaCapacitacion = capacitacionDAO.obtenerCapacitaciones();
-			System.out.println("lista enviada");
 	    	
-	    	request.setAttribute("listaCapacitacion", listaCapacitacion);
+	    	//Obtenemos la lista desde el DAO 
+	    	List<Capacitacion> listaCapacitaciones = capacitacionDAO.obtenerCapacitaciones();
+			System.out.println("-Lista desplegada en listar-capacitaciones.jsp");
+			
+	    	//Enviamos la lista por el request hacia la vista
+	    	request.setAttribute("listaCapacitaciones", listaCapacitaciones);
+	    	
 	    	//Redireccionando a la vista para ver las capacitaciones
 	    	getServletContext().getRequestDispatcher("/views/listar-capacitaciones.jsp").forward(request, response);
 	    } else {

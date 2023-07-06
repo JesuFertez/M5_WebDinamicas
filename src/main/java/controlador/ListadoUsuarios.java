@@ -41,13 +41,18 @@ public class ListadoUsuarios extends HttpServlet {
 				HttpSession session = request.getSession();
 				//validacion de usuario logeado
 			    if (session != null && session.getAttribute("usuario") != null) {
+			    	//Creando usuarios por defecto
 			    	List<Usuario> listaUsuarios= new ArrayList<>();
 					Usuario usu1= new Administrativo(1,"marco","marco1234","Marco Antonio Soliz del Carmen","Recursos Humanos","5 años en gestión de personal para Ambrosoli.co");
 					Usuario usu2= new Profesional(2,"maria","maria1234","María Josefa Castro Pérez","Técnico Lógistico",LocalDate.of(2020,11, 12));
 					Usuario usu3= new Cliente(3,"cocacola","cocacola1234","Manuel Francisco","Castillo Montesinos",985436622,"Las Parcelas Blancas #4455","Huechuraba",45,164425667);
+					
+					//Agregando usuarios
 			    	listaUsuarios.add(usu1);
 			    	listaUsuarios.add(usu2);
 			    	listaUsuarios.add(usu3);
+			    	
+			    	//Enviado lista por el request
 			    	request.setAttribute("listaUsuarios", listaUsuarios);
 			    	//Redireccionando a la vista para ver las capacitaciones
 			    	getServletContext().getRequestDispatcher("/views/listado-usuarios.jsp").forward(request, response);
