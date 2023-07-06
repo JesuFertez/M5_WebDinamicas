@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,11 +16,14 @@
 	crossorigin="anonymous">
 </head>
 <body>
+
 	<!-- Incluyendo navbar menu -->
+	<c:set var="navItem" value="Inicio" /> <!-- Menu activo -->
 	<%@ include file='navbar.jsp'%>
+	
 	<!-- Pagina de inicio -->
 	<div class="container">
-		<section>
+		<section class="mt-5">
 			<h1>¡Bienvenido a nuestro sitio web!</h1>
 
 			<p>En nuestra compañía, nos dedicamos a brindar asesorías en

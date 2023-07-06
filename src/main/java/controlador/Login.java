@@ -46,6 +46,7 @@ public class Login extends HttpServlet {
 		if (usuario.equals("admin") && password.equals("1234")) {
 			sesion.setAttribute("ingreso", true);
 			getServletContext().getRequestDispatcher("/views/contacto.jsp").forward(request, response);
+			System.out.println("** Inicio de sesión exitoso, usuario "+ usuario);
 		} else {
 			getServletContext().getRequestDispatcher("/views/login.jsp").forward(request, response);
 		}

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,7 +16,8 @@
 	crossorigin="anonymous">
 </head>
 <body>
-	<!-- Formulario para crear capacitacion -->
+	<!-- Incluyendo navbar menu -->
+	<c:set var="navItem" value="Contacto" /> <!-- Menu activo -->
 	<%@ include file='navbar.jsp'%>
 	
 	<section>
