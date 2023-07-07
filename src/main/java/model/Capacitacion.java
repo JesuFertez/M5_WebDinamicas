@@ -15,6 +15,19 @@ public class Capacitacion {
 	public Capacitacion() {
 	}
 	
+	public Capacitacion(String nombre, String detalle, int rutCliente, String dia, String hora, String lugar,
+			String duracion, int cantidadAsistentes) {
+		super();
+		this.nombre = nombre;
+		this.detalle = detalle;
+		this.rutCliente = rutCliente;
+		this.dia = dia;
+		this.hora = hora;
+		this.lugar = lugar;
+		this.duracion = duracion;
+		this.cantidadAsistentes = cantidadAsistentes;
+	}
+	
 	public Capacitacion(int id, String nombre, String detalle, int rutCliente, String dia, String hora, String lugar,
 			String duracion, int cantidadAsistentes) {
 		super();
