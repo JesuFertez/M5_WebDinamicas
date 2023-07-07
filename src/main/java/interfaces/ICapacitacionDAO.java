@@ -6,6 +6,10 @@ import model.Capacitacion;
 
 public interface ICapacitacionDAO {
 
-	List<Capacitacion> obtenerCapacitaciones();
-	void agregarCapacitacion(Capacitacion capacitacion);
+	public int crearCapacitacion(Capacitacion cap);
+	public List<Capacitacion>obtenerCapacitaciones();
+	public Capacitacion obtenerCapacitacion(int id);
+	public int actualizar(Capacitacion p);
+	public int borrarCapacitacion(Capacitacion p);
+
 }
