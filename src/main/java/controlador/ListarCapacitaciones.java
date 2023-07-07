@@ -1,6 +1,7 @@
 package controlador;
 
 import java.io.IOException;
+
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.List;
@@ -12,8 +13,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import conexion.Conexion;
 import implementacion.CapacitacionDAOImpl;
-import interfaces.ICapacitacionDAO;
 import model.Capacitacion;
 
 /**
@@ -39,6 +40,7 @@ public class ListarCapacitaciones extends HttpServlet {
 			throws ServletException, IOException {
 
 		// Se obtiene la sesion actual
+		
 		HttpSession session = request.getSession();
 		// validacion de usuario logeado
 		if (session != null && session.getAttribute("usuario") != null) {

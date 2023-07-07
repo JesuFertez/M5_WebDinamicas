@@ -36,7 +36,6 @@ public class CapacitacionDAOImpl implements ICapacitacionDAO {
 			registros = stmt.executeUpdate(); // INSERT-UPDATE-DELETE
 
 			stmt.close();
-			conn.close();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace(System.out);
@@ -71,7 +70,6 @@ public class CapacitacionDAOImpl implements ICapacitacionDAO {
 			}
 			rs.close();
 			stmt.close();
-			conn.close();
 		} catch (SQLException e) {
 			e.printStackTrace(System.out);
 
@@ -98,7 +96,6 @@ public class CapacitacionDAOImpl implements ICapacitacionDAO {
 			}
 			rs.close();
 			stm.close();
-			conn.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -129,7 +126,6 @@ public class CapacitacionDAOImpl implements ICapacitacionDAO {
 			registros = stmt.executeUpdate(); // INSERT-UPDATE-DELETE
 
 			stmt.close();
-			conn.close();
 		} catch (SQLException e) {
 			e.printStackTrace(System.out);
 		}
@@ -151,7 +147,6 @@ public class CapacitacionDAOImpl implements ICapacitacionDAO {
 			registros = stmt.executeUpdate(); // INSERT-UPDATE-DELETE
 
 			stmt.close();
-			conn.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
