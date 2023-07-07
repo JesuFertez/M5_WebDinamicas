@@ -36,6 +36,7 @@ public class CapacitacionDAOImpl implements ICapacitacionDAO {
 			registros = stmt.executeUpdate(); // INSERT-UPDATE-DELETE
 
 			stmt.close();
+			conn.close();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace(System.out);
@@ -48,7 +49,7 @@ public class CapacitacionDAOImpl implements ICapacitacionDAO {
 		String SQL_SELECT = "SELECT id, nombre, detalle,rut_cliente, dia, hora, lugar, duracion, cantidad_asistentes FROM Capacitaciones";
 		List<Capacitacion> capacitaciones = new ArrayList<>();
 		
-		
+	
 		try {
 			Connection conn = Conexion.getConn();
 			PreparedStatement stmt = conn.prepareStatement(SQL_SELECT);
@@ -70,6 +71,7 @@ public class CapacitacionDAOImpl implements ICapacitacionDAO {
 			}
 			rs.close();
 			stmt.close();
+			conn.close();
 		} catch (SQLException e) {
 			e.printStackTrace(System.out);
 
@@ -96,6 +98,7 @@ public class CapacitacionDAOImpl implements ICapacitacionDAO {
 			}
 			rs.close();
 			stm.close();
+			conn.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -126,6 +129,7 @@ public class CapacitacionDAOImpl implements ICapacitacionDAO {
 			registros = stmt.executeUpdate(); // INSERT-UPDATE-DELETE
 
 			stmt.close();
+			conn.close();
 		} catch (SQLException e) {
 			e.printStackTrace(System.out);
 		}
@@ -146,6 +150,7 @@ public class CapacitacionDAOImpl implements ICapacitacionDAO {
 			registros = stmt.executeUpdate(); // INSERT-UPDATE-DELETE
 
 			stmt.close();
+			conn.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
