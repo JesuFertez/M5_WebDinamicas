@@ -47,16 +47,13 @@ public class CapacitacionDAOImpl implements ICapacitacionDAO {
 	@Override
 	public List<Capacitacion> obtenerCapacitaciones() {
 		String SQL_SELECT = "SELECT id, nombre, detalle,rut_cliente, dia, hora, lugar, duracion, cantidad_asistentes FROM Capacitaciones";
-
-		Capacitacion cap;
 		List<Capacitacion> capacitaciones = new ArrayList<>();
-		Connection conn;
-		PreparedStatement stmt;
-		ResultSet rs;
+		
+		
 		try {
-			conn = Conexion.getConn();
-			stmt = conn.prepareStatement(SQL_SELECT);
-			rs = stmt.executeQuery();
+			Connection conn = Conexion.getConn();
+			PreparedStatement stmt = conn.prepareStatement(SQL_SELECT);
+			ResultSet rs = stmt.executeQuery();
 
 			while (rs.next()) {
 				int id = rs.getInt("id");
@@ -69,10 +66,9 @@ public class CapacitacionDAOImpl implements ICapacitacionDAO {
 				String duracion = rs.getString("duracion");
 				int cantidadAsistentes = rs.getInt("cantidad_asistentes");
 
-				cap = new Capacitacion(id, nombre, detalle, rutCliente, dia, hora, lugar, duracion, cantidadAsistentes);
-				capacitaciones.add(cap);
+				capacitaciones.add(new Capacitacion(id, nombre, detalle, rutCliente, dia, hora, lugar, duracion, cantidadAsistentes));
+				
 			}
-			
 			rs.close();
 			stmt.close();
 			conn.close();
@@ -80,6 +76,7 @@ public class CapacitacionDAOImpl implements ICapacitacionDAO {
 			e.printStackTrace(System.out);
 
 		}
+		
 		return capacitaciones;
 	}
 
@@ -90,8 +87,8 @@ public class CapacitacionDAOImpl implements ICapacitacionDAO {
 		Capacitacion cap = null;
 
 		try {
-			Connection cn = Conexion.getConn();
-			Statement stm = cn.createStatement();
+			Connection conn = Conexion.getConn();
+			Statement stm = conn.createStatement();
 			ResultSet rs = stm.executeQuery(SQL_SELECT_FROM + id);
 
 			if (rs.next()) {
@@ -101,7 +98,7 @@ public class CapacitacionDAOImpl implements ICapacitacionDAO {
 			}
 			rs.close();
 			stm.close();
-
+			conn.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

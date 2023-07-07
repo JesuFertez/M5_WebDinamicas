@@ -1,6 +1,8 @@
 package controlador;
 
 import java.io.IOException;
+import java.sql.Connection;
+import java.sql.SQLException;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -41,13 +43,11 @@ public class ListarCapacitaciones extends HttpServlet {
 		// validacion de usuario logeado
 		if (session != null && session.getAttribute("usuario") != null) {
 
-			ICapacitacionDAO capacitacionDAO = new CapacitacionDAOImpl();
-			// Obtenemos la lista desde el DAO
+			CapacitacionDAOImpl capacitacionDAO = new CapacitacionDAOImpl(); // Obtenemos la lista desde el DAO
 			List<Capacitacion> listaCapacitaciones = capacitacionDAO.obtenerCapacitaciones();
 			System.out.println("-Lista desplegada en listar-capacitaciones.jsp");
 
-			// Enviamos la lista por el request hacia la vista
-			request.setAttribute("listaCapacitaciones", listaCapacitaciones);
+			session.setAttribute("listaCapacitaciones", listaCapacitaciones);
 
 			// Redireccionando a la vista para ver las capacitaciones
 			getServletContext().getRequestDispatcher("/views/listar-capacitaciones.jsp").forward(request, response);
