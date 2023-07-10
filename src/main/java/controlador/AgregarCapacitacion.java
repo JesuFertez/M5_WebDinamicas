@@ -47,7 +47,7 @@ public class AgregarCapacitacion extends HttpServlet {
 			//Obteniendo parametros del formulario
 			String nombre = request.getParameter("nombre");
 			String detalle = request.getParameter("detalle");
-	        int rutCliente = Integer.valueOf(request.getParameter("rutCliente"));
+	        int rutCliente = Integer.parseInt(request.getParameter("rutCliente"));
 	        String dia = request.getParameter("dia").toLowerCase();
 	        String hora = request.getParameter("hora");
 	        String lugar = request.getParameter("lugar");
@@ -55,10 +55,7 @@ public class AgregarCapacitacion extends HttpServlet {
 	        int cantidadAsistentes = Integer.valueOf(request.getParameter("cantidadAsistentes"));
 	        
 	        //Validaciones a los campos del formulario
-	        boolean todoOk = (ValidarDatos.esObligatorio(nombre) && ValidarDatos.esObligatorio(detalle) && ValidarDatos.esDiaValido(dia) &&
-	        				 ValidarDatos.esHoraValida(hora) && ValidarDatos.RangoCaracteres(lugar, 10,50) && 
-	        				 ValidarDatos.RangoCaracteres(duracion, 0, 70) && ValidarDatos.esObligatorio(String.valueOf(rutCliente)) &&
-	        				 ValidarDatos.Numero(String.valueOf(cantidadAsistentes), 0, 1000));
+	        boolean todoOk = (ValidarDatos.esObligatorio(nombre));
 	        if(todoOk) {
 				//Creando nueva capacitacion
 				Capacitacion capacitacion = new Capacitacion(nombre,detalle,rutCliente,dia,hora,lugar,duracion,cantidadAsistentes);
