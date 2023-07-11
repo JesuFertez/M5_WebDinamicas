@@ -68,7 +68,7 @@ public class Capacitacion {
 	}
 	
 	public void setDetalle(String detalle) {
-		if(ValidarDatos.RangoCaracteres(detalle, 0, 100)) {
+		if(ValidarDatos.RangoCaracteres(detalle, 5, 100)) {
 			this.detalle = detalle;
 		}
 	}
