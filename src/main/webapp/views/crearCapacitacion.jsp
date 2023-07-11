@@ -36,19 +36,28 @@
 	        <input type="text" class="form-control" name="nombre" required>
 	      </div>
 	      <div class="col-md-6 mb-3">
-	        <label for="rut" class="form-label">RUT del Cliente</label>
+	        <label for="rut" class="form-label">RUT Cliente</label>
 	        <input type="text" class="form-control" name="rutCliente" required>
 	      </div>
-	      <div class="col-md-4 mb-3">
-	        <label for="dia" class="form-label">Día</label>
-	        <input type="text" class="form-control" name="dia" required>
-	      </div>
+			<div class="col-md-4 mb-3">
+			  <label for="dia" class="form-label">Día</label>
+			  <select class="form-select" name="dia" required>
+			    <option value="" disabled selected>Seleccione un día</option>
+			    <option value="Lunes">Lunes</option>
+			    <option value="Martes">Martes</option>
+			    <option value="Miercoles">Miércoles</option>
+			    <option value="Jueves">Jueves</option>
+			    <option value="Viernes">Viernes</option>
+			    <option value="Sabado">Sábado</option>
+			    <option value="Domingo">Domingo</option>
+			  </select>
+			</div>
 	      <div class="col-md-4 mb-3">
 	        <label for="hora" class="form-label">Hora</label>
 	        <input type="text" class="form-control" name="hora" required>
 	      </div>
 	      <div class="col-md-4 mb-3">
-	        <label for="cantidadAsistentes" class="form-label">Cantidad de Asistentes</label>
+	        <label for="cantidadAsistentes" class="form-label">Asistentes</label>
 	        <input type="number" class="form-control" name="cantidadAsistentes" required>
 	      </div>
 	      <div class="col-md-6 mb-3">

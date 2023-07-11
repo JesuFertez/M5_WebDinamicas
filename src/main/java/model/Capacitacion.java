@@ -1,5 +1,7 @@
 package model;
 
+import utils.ValidarDatos;
+
 public class Capacitacion {
 	private int id;
 	private String nombre;
@@ -14,32 +16,32 @@ public class Capacitacion {
 	
 	public Capacitacion() {
 	}
-	
+	//Constructor formulario
 	public Capacitacion(String nombre, String detalle, int rutCliente, String dia, String hora, String lugar,
 			String duracion, int cantidadAsistentes) {
 		super();
-		this.nombre = nombre;
-		this.detalle = detalle;
-		this.rutCliente = rutCliente;
-		this.dia = dia;
-		this.hora = hora;
-		this.lugar = lugar;
-		this.duracion = duracion;
-		this.cantidadAsistentes = cantidadAsistentes;
+		setNombre(nombre);
+		setDetalle(detalle);
+		setRutCliente(rutCliente);
+		setDia(dia);
+		setHora(hora);
+		setLugar(lugar);
+		setDuracion(duracion);
+		setCantidadAsistentes(cantidadAsistentes);
 	}
-	
+	//Constructor DAO
 	public Capacitacion(int id, String nombre, String detalle, int rutCliente, String dia, String hora, String lugar,
 			String duracion, int cantidadAsistentes) {
 		super();
-		this.id = id;
-		this.nombre = nombre;
-		this.detalle = detalle;
-		this.rutCliente = rutCliente;
-		this.dia = dia;
-		this.hora = hora;
-		this.lugar = lugar;
-		this.duracion = duracion;
-		this.cantidadAsistentes = cantidadAsistentes;
+		setId(id);
+		setNombre(nombre);
+		setDetalle(detalle);
+		setRutCliente(rutCliente);
+		setDia(dia);
+		setHora(hora);
+		setLugar(lugar);
+		setDuracion(duracion);
+		setCantidadAsistentes(cantidadAsistentes);
 	}
 
 	public int getId() {
@@ -47,23 +49,28 @@ public class Capacitacion {
 	}
 
 	public void setId(int id) {
-		this.id = id;
+		if(ValidarDatos.esObligatorio(String.valueOf(id))) {
+			this.id = id;			
+		}
 	}
-
 	public String getNombre() {
 		return nombre;
 	}
 
 	public void setNombre(String nombre) {
-		this.nombre = nombre;
+		if(ValidarDatos.RangoCaracteres(nombre, 5, 100)) {
+			this.nombre = nombre;
+		}
 	}
 
 	public String getDetalle() {
 		return detalle;
 	}
-
+	
 	public void setDetalle(String detalle) {
-		this.detalle = detalle;
+		if(ValidarDatos.RangoCaracteres(detalle, 0, 100)) {
+			this.detalle = detalle;
+		}
 	}
 
 	public int getRutCliente() {
@@ -71,7 +78,9 @@ public class Capacitacion {
 	}
 
 	public void setRutCliente(int rutCliente) {
-		this.rutCliente = rutCliente;
+		if(ValidarDatos.esObligatorio(String.valueOf(rutCliente))) {			
+			this.rutCliente = rutCliente;
+		}
 	}
 
 	public String getDia() {
@@ -79,7 +88,9 @@ public class Capacitacion {
 	}
 
 	public void setDia(String dia) {
-		this.dia = dia;
+		if(ValidarDatos.esDiaValido(dia)) {
+			this.dia = dia;
+		}
 	}
 
 	public String getHora() {
@@ -87,15 +98,18 @@ public class Capacitacion {
 	}
 
 	public void setHora(String hora) {
-		this.hora = hora;
+		if(ValidarDatos.esHoraValida(hora)) {
+			this.hora = hora;			
+		}
 	}
 
 	public String getLugar() {
 		return lugar;
 	}
-
 	public void setLugar(String lugar) {
-		this.lugar = lugar;
+		if(ValidarDatos.RangoCaracteres(lugar, 10, 50)) {
+			this.lugar = lugar;			
+		}
 	}
 
 	public String getDuracion() {
@@ -103,7 +117,9 @@ public class Capacitacion {
 	}
 
 	public void setDuracion(String duracion) {
-		this.duracion = duracion;
+		if(ValidarDatos.RangoCaracteres(duracion, 0, 70)) {
+			this.duracion = duracion;			
+		}
 	}
 
 	public int getCantidadAsistentes() {
@@ -111,7 +127,9 @@ public class Capacitacion {
 	}
 
 	public void setCantidadAsistentes(int cantidadAsistentes) {
-		this.cantidadAsistentes = cantidadAsistentes;
+		if(ValidarDatos.Numero(String.valueOf(cantidadAsistentes), 0, 1000)) {
+			this.cantidadAsistentes = cantidadAsistentes;			
+		}
 	}
 
 	@Override
