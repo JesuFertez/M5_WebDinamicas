@@ -18,8 +18,10 @@
 <body>
 
 	<!-- Incluyendo navbar menu -->
-	<c:set var="navItem" value="Listar" /> <!-- Menu activo -->
-	<c:set var="navText" value="Usuarios"/> <!-- Texto Listar -->
+	<c:set var="navItem" value="Listar" />
+	<!-- Menu activo -->
+	<c:set var="navText" value="Usuarios" />
+	<!-- Texto Listar -->
 	<%@ include file='navbar.jsp'%>
 
 	<!--  Vista para mostrar las capacitaciones -->
@@ -27,29 +29,38 @@
 
 		<section>
 			<h1>Listado de Usuarios</h1>
+			<c:choose>
+				<c:when test="${empty listaUsuarios}">
+					<div class="alert alert-danger" style="text-align: center"
+						role="alert">
+						No hay registros de Usuarios. <a href="CrearUsuario"
+							class="alert-link">Ir a crear Usuario</a>
+					</div>
+				</c:when>
+				<c:otherwise>
+					<table class="table table-striped table-bordered">
+						<thead class="table-dark">
+							<tr>
+								<!-- Capacitacion(int identificador, int rutCliente, String dia, String hora, String lugar, String duracion,int cantidadAsistentes) -->
+								<th>Id</th>
+								<th>Nombre</th>
+								<th>Tipo</th>
+							</tr>
+						</thead>
+						<tbody>
+							<!-- Ciclo forEach con JSTL para imprimir datos de la lista -->
+							<c:forEach var="usu" items="${listaUsuarios}">
+								<tr>
+									<td><c:out value="${usu.getId()}"></c:out></td>
+									<td><c:out value="${usu.getNombre()}"></c:out></td>
+									<td><c:out value="${usu.getTipo()}"></c:out></td>
+								</tr>
+							</c:forEach>
 
-			<table class="table table-striped table-bordered">
-				<thead class="table-dark">
-					<tr>
-						<!-- Capacitacion(int identificador, int rutCliente, String dia, String hora, String lugar, String duracion,int cantidadAsistentes) -->
-						<th>Id</th>
-						<th>Nombre</th>
-						<th>Tipo</th>
-					</tr>
-				</thead>
-				<tbody>
-					<!-- Ciclo forEach con JSTL para imprimir datos de la lista -->
-					<c:forEach var="usu" items="${listaUsuarios}">
-						<tr>
-							<td><c:out value="${usu.getId()}"></c:out></td>
-							<td><c:out value="${usu.getNombre()}"></c:out></td>
-							<td><c:out value="${usu.getTipo()}"></c:out></td>
-						</tr>
-					</c:forEach>
-
-				</tbody>
-			</table>
-
+						</tbody>
+					</table>
+				</c:otherwise>
+			</c:choose>
 		</section>
 	</div>
 
