@@ -9,6 +9,26 @@ public class Usuario {
 	
 	public Usuario() {}
 	
+	public Usuario(int id) {
+		super();
+		this.id = id;
+	}
+
+
+	public Usuario(int id, String nombreUsuario, TipoUsuario tipo) {
+		super();
+		this.id = id;
+		this.nombreUsuario = nombreUsuario;
+		this.tipo = tipo;
+	}
+
+	public Usuario(String nombreUsuario, String contraseña, TipoUsuario tipo) {
+		super();
+		this.nombreUsuario = nombreUsuario;
+		this.contraseña= contraseña;
+		this.tipo = tipo;
+	}
+	
 	public Usuario(int id, String nombreUsuario, String contraseña, TipoUsuario tipo) {
 		super();
 		this.id = id;
