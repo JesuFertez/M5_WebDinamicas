@@ -56,18 +56,33 @@
 									<td><c:out value="${usu.getTipo()}"></c:out></td>
 								</tr>
 							</c:forEach>
-
-						</tbody>
-					</table>
+          <table class="table table-striped table-bordered">
+            <thead class="table-dark">
+              <tr>
+                <!-- Capacitacion(int identificador, int rutCliente, String dia, String hora, String lugar, String duracion,int cantidadAsistentes) -->
+                <th>Id</th>
+                <th>Nombre</th>
+                <th>Tipo</th>
+                <th>Modificar</th>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- Ciclo forEach con JSTL para imprimir datos de la lista -->
+              <c:forEach var="usu" items="${listaUsuarios}">
+                <tr>
+                  <td><c:out value="${usu.getId()}"></c:out></td>
+                  <td><c:out value="${usu.getNombre()}"></c:out></td>
+                  <td><c:out value="${usu.getTipo()}"></c:out></td>
+                  <td><a href="EditarCliente"><i class="bi bi-pencil-square"></i></a></td>
+                </tr>
+              </c:forEach>
+            </tbody>
+          </table>
 				</c:otherwise>
 			</c:choose>
 		</section>
 	</div>
-
-
-
-
-	<script
+<script
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
 		integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
 		crossorigin="anonymous"></script>
