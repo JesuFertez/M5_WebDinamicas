@@ -1,3 +1,4 @@
+<%@page import="java.sql.*" %>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -33,7 +34,7 @@
 				<form action="EditarCliente" class="row" method="post">
 				  <div class="col-md-6 mb-3">
 						<label for="nombre" class="form-label">Nombre</label>
-						<input type="text" class="form-control" name="nombre" required>
+						<input type="text" class="form-control" name="nombre" value="${usuario.nombre}" required>
 				  </div>
 				  <div class="col-md-6 mb-3">
 						<label for="contraseña" class="form-label">Contraseña</label>
@@ -42,9 +43,9 @@
 					<div class="col-md-12 mb-3">
 					    <label for="tipoLbl" class="form-label">Tipo</label>
 					    <select class="form-control" name="tipo" required>
-					        <option value="Cliente">Cliente</option>
-					        <option value="Administrativo">Administrativo</option>
-					        <option value="Profesional">Profesional</option>
+					        <option value="Cliente" <c:if test="${'Cliente' eq usuario.tipo}">selected</c:if>>Cliente</option>
+					        <option value="Administrativo" <c:if test="${'Administrativo' eq usuario.tipo}">selected</c:if>>Administrativo</option>
+					        <option value="Profesional" <c:if test="${'Profesional' eq usuario.tipo}">selected</c:if>>Profesional</option>
 					    </select>
 					</div>
 					

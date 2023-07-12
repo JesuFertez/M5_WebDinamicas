@@ -41,6 +41,11 @@ public class EditarCliente extends HttpServlet {
 		HttpSession session = request.getSession();
 		//validacion de usuario logeado
 	    if (session != null && session.getAttribute("usuario") != null) {
+	    	String id = request.getParameter("id");
+	    	
+	    	Usuario usuario = usuarioDAO.obtenerUsuario(Integer.parseInt(id));
+	    	request.setAttribute("usuario", usuario);
+	    	
 			getServletContext().getRequestDispatcher("/views/editar-usuario.jsp").forward(request, response);
 	    } else {
 	    	//redireccionando al login
@@ -64,7 +69,7 @@ public class EditarCliente extends HttpServlet {
 
 			if (todoOk) {
 				Usuario usuario = new Usuario(nombre, contrasena, TipoUsuario.parse(tipo));
-				usuarioDAO.crearUsuario(usuario);
+				usuarioDAO.actualizarUsuario(usuario);
 				request.setAttribute("mensaje", "Usuario modificado correctamente");
 
 				// Redireccionar a web de exito

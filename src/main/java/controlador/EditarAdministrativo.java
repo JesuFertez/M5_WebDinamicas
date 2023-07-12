@@ -64,7 +64,7 @@ public class EditarAdministrativo extends HttpServlet {
 
 			if (todoOk) {
 				Usuario usuario = new Usuario(nombre, contrasena, TipoUsuario.parse(tipo));
-				usuarioDAO.crearUsuario(usuario);
+				usuarioDAO.actualizarUsuario(usuario);
 				request.setAttribute("mensaje", "Usuario modificado correctamente");
 
 				// Redireccionar a web de exito
