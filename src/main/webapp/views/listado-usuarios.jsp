@@ -35,6 +35,7 @@
 						<th>Id</th>
 						<th>Nombre</th>
 						<th>Tipo</th>
+						<th>Modificar</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -44,6 +45,7 @@
 							<td><c:out value="${usu.getId()}"></c:out></td>
 							<td><c:out value="${usu.getNombre()}"></c:out></td>
 							<td><c:out value="${usu.getTipo()}"></c:out></td>
+							<td><a href="EditarCliente"><i class="bi bi-pencil-square"></i></a></td>
 						</tr>
 					</c:forEach>
 
@@ -52,9 +54,6 @@
 
 		</section>
 	</div>
-
-
-
 
 	<script
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"

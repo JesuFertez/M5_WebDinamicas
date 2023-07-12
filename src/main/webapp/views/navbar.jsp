@@ -59,6 +59,9 @@
 		            	 <li>
 			            	 <a class="dropdown-item" href="CrearUsuario">
 			            	 <i class="bi bi-person-plus"></i>  Crear Usuario</a>
+		            	 </li>		            	 		            	 <li>
+			            	 <a class="dropdown-item" href="EditarCliente">
+			            	 <i class="bi bi-person-plus"></i>  Modificar usuario</a>
 		            	 </li>
 		           	</ul>
 		    	</li>
