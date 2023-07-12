@@ -38,24 +38,6 @@
 					</div>
 				</c:when>
 				<c:otherwise>
-					<table class="table table-striped table-bordered">
-						<thead class="table-dark">
-							<tr>
-								<!-- Capacitacion(int identificador, int rutCliente, String dia, String hora, String lugar, String duracion,int cantidadAsistentes) -->
-								<th>Id</th>
-								<th>Nombre</th>
-								<th>Tipo</th>
-							</tr>
-						</thead>
-						<tbody>
-							<!-- Ciclo forEach con JSTL para imprimir datos de la lista -->
-							<c:forEach var="usu" items="${listaUsuarios}">
-								<tr>
-									<td><c:out value="${usu.getId()}"></c:out></td>
-									<td><c:out value="${usu.getNombre()}"></c:out></td>
-									<td><c:out value="${usu.getTipo()}"></c:out></td>
-								</tr>
-							</c:forEach>
           <table class="table table-striped table-bordered">
             <thead class="table-dark">
               <tr>

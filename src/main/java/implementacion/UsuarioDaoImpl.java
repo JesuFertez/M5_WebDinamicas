@@ -114,7 +114,7 @@ public class UsuarioDaoImpl implements IUsuarioDAO {
 	}
 
 	@Override
-	public int borarUsuario(Usuario usu) {
+	public int borrarUsuario(Usuario usu) {
 		String SQL_DELETE="DELETE FROM Usuarios WHERE id =?";
 		int registros =0;
 		
