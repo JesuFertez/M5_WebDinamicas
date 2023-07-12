@@ -68,22 +68,23 @@ public class UsuarioDaoImpl implements IUsuarioDAO {
 
 	@Override
 	public Usuario obtenerUsuario(int id) {
-		String SQL_SELECT_FROM =" SELECT id nombre, tipo from Usuario WHERE id=";
+		String SQL_SELECT_FROM =" SELECT id,nombre,tipo from Usuarios WHERE id=";
 		Usuario usu=null;
 		
 		try {
 			Connection conn = Conexion.getConn();
 			Statement stmt =conn.createStatement();
 			ResultSet rs= stmt.executeQuery(SQL_SELECT_FROM+id);
-			
 			if(rs.next()) {
-				usu = new Usuario(rs.getInt(id), rs.getString("nombre"), TipoUsuario.parse(rs.getString("tipo")));
+				usu = new Usuario();
+				usu.setId(rs.getInt(1));
+				usu.setNombre(rs.getString(2));
+				usu.setTipo(TipoUsuario.parse(rs.getString(3)));
 			}
 			rs.close();
 			stmt.close();
 			conn.close();
 		} catch (SQLException e) {
-			
 			e.printStackTrace(System.out);
 		}
 		return usu;

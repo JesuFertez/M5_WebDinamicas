@@ -55,7 +55,7 @@
                   <td><c:out value="${usu.getId()}"></c:out></td>
                   <td><c:out value="${usu.getNombre()}"></c:out></td>
                   <td><c:out value="${usu.getTipo()}"></c:out></td>
-                  <td><a href="EditarCliente"><i class="bi bi-pencil-square"></i></a></td>
+                  <td><a href="EditarCliente?id=${usu.getId()}"><i class="bi bi-pencil-square"></i></a></td>
                 </tr>
               </c:forEach>
             </tbody>
