@@ -18,8 +18,10 @@
 <body>
 
 	<!-- Incluyendo navbar menu -->
-	<c:set var="navItem" value="Listar" /> <!-- Menu activo -->
-	<c:set var="navText" value="Usuarios"/> <!-- Texto Listar -->
+	<c:set var="navItem" value="Listar" />
+	<!-- Menu activo -->
+	<c:set var="navText" value="Usuarios" />
+	<!-- Texto Listar -->
 	<%@ include file='navbar.jsp'%>
 
 	<!--  Vista para mostrar las capacitaciones -->
@@ -27,35 +29,60 @@
 
 		<section>
 			<h1>Listado de Usuarios</h1>
-
-			<table class="table table-striped table-bordered">
-				<thead class="table-dark">
-					<tr>
-						<!-- Capacitacion(int identificador, int rutCliente, String dia, String hora, String lugar, String duracion,int cantidadAsistentes) -->
-						<th>Id</th>
-						<th>Nombre</th>
-						<th>Tipo</th>
-						<th>Modificar</th>
-					</tr>
-				</thead>
-				<tbody>
-					<!-- Ciclo forEach con JSTL para imprimir datos de la lista -->
-					<c:forEach var="usu" items="${listaUsuarios}">
-						<tr>
-							<td><c:out value="${usu.getId()}"></c:out></td>
-							<td><c:out value="${usu.getNombre()}"></c:out></td>
-							<td><c:out value="${usu.getTipo()}"></c:out></td>
-							<td><a href="EditarCliente"><i class="bi bi-pencil-square"></i></a></td>
-						</tr>
-					</c:forEach>
-
-				</tbody>
-			</table>
-
+			<c:choose>
+				<c:when test="${empty listaUsuarios}">
+					<div class="alert alert-danger" style="text-align: center"
+						role="alert">
+						No hay registros de Usuarios. <a href="CrearUsuario"
+							class="alert-link">Ir a crear Usuario</a>
+					</div>
+				</c:when>
+				<c:otherwise>
+					<table class="table table-striped table-bordered">
+						<thead class="table-dark">
+							<tr>
+								<!-- Capacitacion(int identificador, int rutCliente, String dia, String hora, String lugar, String duracion,int cantidadAsistentes) -->
+								<th>Id</th>
+								<th>Nombre</th>
+								<th>Tipo</th>
+							</tr>
+						</thead>
+						<tbody>
+							<!-- Ciclo forEach con JSTL para imprimir datos de la lista -->
+							<c:forEach var="usu" items="${listaUsuarios}">
+								<tr>
+									<td><c:out value="${usu.getId()}"></c:out></td>
+									<td><c:out value="${usu.getNombre()}"></c:out></td>
+									<td><c:out value="${usu.getTipo()}"></c:out></td>
+								</tr>
+							</c:forEach>
+          <table class="table table-striped table-bordered">
+            <thead class="table-dark">
+              <tr>
+                <!-- Capacitacion(int identificador, int rutCliente, String dia, String hora, String lugar, String duracion,int cantidadAsistentes) -->
+                <th>Id</th>
+                <th>Nombre</th>
+                <th>Tipo</th>
+                <th>Modificar</th>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- Ciclo forEach con JSTL para imprimir datos de la lista -->
+              <c:forEach var="usu" items="${listaUsuarios}">
+                <tr>
+                  <td><c:out value="${usu.getId()}"></c:out></td>
+                  <td><c:out value="${usu.getNombre()}"></c:out></td>
+                  <td><c:out value="${usu.getTipo()}"></c:out></td>
+                  <td><a href="EditarCliente"><i class="bi bi-pencil-square"></i></a></td>
+                </tr>
+              </c:forEach>
+            </tbody>
+          </table>
+				</c:otherwise>
+			</c:choose>
 		</section>
 	</div>
-
-	<script
+<script
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
 		integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
 		crossorigin="anonymous"></script>
