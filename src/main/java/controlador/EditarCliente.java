@@ -58,6 +58,7 @@ public class EditarCliente extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		
 		try {
 			String nombre = request.getParameter("nombre");
 			String contrasena = request.getParameter("contraseña");
@@ -78,7 +79,7 @@ public class EditarCliente extends HttpServlet {
 				getServletContext().getRequestDispatcher("/views/listado-usuarios.jsp").forward(request, response);
 			}
 		} catch (Exception e) {
-			System.out.println("Error al modificar usuario Servlet: " + e);
+			System.out.println("Error en EditarCliente Servlet: " + e);
 		}
 	}
 
