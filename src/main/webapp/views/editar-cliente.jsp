@@ -29,41 +29,43 @@
 		<!-- Formulario para modificar un cliente -->
 		<div class="card" style="width: 50%;">
 			<div class="card-header bg-dark text-white">
-				<h2 class="card-title d-flex justify-content-center">Modificar ${usuario.getTipo()}</h2>
+			<c:set var="cliente" value="${cliente}" />
+				<h2 class="card-title d-flex justify-content-center">Modificar ${cliente.getTipo()}</h2>
 			</div>
 			
 			<div class="card-body">
 				<form action="EdicionClientes" class="row" method="post">
 					<div class="col-md-5 mb-3">
 						<label for="nombres" class="form-label">Nombres</label> 
-						<input value="${usuario.getNombres()}" type="text" class="form-control" name="nombresCliente" required>
+						<input value="${cliente.getNombres()}" type="text" class="form-control" name="nombresCliente" required>
 					</div>
 					<div class="col-md-5 mb-3">
 						<label for="apellidos" class="form-label">Apellidos</label> 
-						<input value="${usuario.getApellidos()}" type="text" class="form-control" name="apellidos" required>
+						<input value="${cliente.getApellidos()}" type="text" class="form-control" name="apellidos" required>
 					</div>
 					<div class="col-md-2 mb-3">
-						<label for="edad" class="form-label">edad</label> 
-						<input value="${usuario.getNombres()}" type="text" class="form-control" name="edad" required>
+						<label for="edad" class="form-label">Edad</label> 
+						<input value="${cliente.getEdad()}" type="text" class="form-control" name="edad" required>
 					</div>
 					<div class="col-md-3 mb-3">
-						<label for="rut" class="form-label">rut</label> 
-						<input value="${usuario.getEdad()}" type="text"class="form-control" name="rut" required>
+						<label for="rut" class="form-label">Rut</label> 
+						<input value="${cliente.getRut()}" type="text"class="form-control" name="rut" required>
 					</div>
 					<div class="col-md-3 mb-3">
 						<label for="telefono" class="form-label">Telefono</label> 
-						<input value="${usuario.getTelefono()}" type="text" class="form-control" name="telefono" required>
+						<input value="${cliente.getTelefono()}" type="text" class="form-control" name="telefono" required>
 					</div>
 					<div class="col-md-3 mb-3">
 						<label for="direccion" class="form-label">Dirección</label> 
-						<input value="${usuario.getDireccion()}" type="text" class="form-control" name="direccion" required>
+						<input value="${cliente.getDireccion()}" type="text" class="form-control" name="direccion" required>
 					</div>
 					<div class="col-md-3 mb-3">
 						<label for="comuna" class="form-label">Comuna</label> 
-						<input value="${usuario.getComuna()}" type="text" class="form-control" name="comuna" required>
+						<input value="${cliente.getComuna()}" type="text" class="form-control" name="comuna" required>
 					</div>
 
 					<div class="col-md-12">
+						<input type="hidden" name="idCliente" value="${cliente.getId()}">
 						<button type="submit" class="btn btn-secondary w-100 mt-4">Guardar</button>
 					</div>
 				</form>

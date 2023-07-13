@@ -8,7 +8,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import implementacion.ClienteDAOImpl;
 import implementacion.UsuarioDAOImpl;
+import interfaces.IClienteDAO;
 import interfaces.IUsuarioDAO;
 import model.Cliente;
 import model.TipoUsuario;
@@ -21,7 +23,7 @@ import utils.ValidarDatos;
 @WebServlet("/EditarCliente")
 public class EditarCliente extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	private IUsuarioDAO usuarioDAO = new UsuarioDAOImpl();
+	private IClienteDAO usuarioDAO = new ClienteDAOImpl();
        
     /**
      * @see HttpServlet#HttpServlet()
@@ -45,7 +47,7 @@ public class EditarCliente extends HttpServlet {
 			
 	    	int id = Integer.valueOf(request.getParameter("idRescatado").toString());
 			Cliente cliente = usuarioDAO.obtenerCliente(id);
-			request.setAttribute("usuario", cliente);
+			request.setAttribute("cliente", cliente);
 			getServletContext().getRequestDispatcher("/views/editar-cliente.jsp").forward(request, response);
 			
 	    } else {
@@ -58,7 +60,28 @@ public class EditarCliente extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	
+
+		int id = Integer.valueOf(request.getParameter("idCliente"));
+		System.out.println(id);
+		String nombres = request.getParameter("nombresCliente");
+		System.out.println(nombres);
+		String apellidos = request.getParameter("apellidos");
+		System.out.println(apellidos);
+		int telefono = Integer.valueOf(request.getParameter("telefono"));
+
+		String direccion = request.getParameter("direccion");
+		String comuna = request.getParameter("comuna");
+		int edad = Integer.valueOf(request.getParameter("edad"));
+		int rut = Integer.valueOf(request.getParameter("rut"));
+
+		Cliente cliente = new Cliente(id,"Juan","9874",nombres,apellidos,telefono,direccion,comuna,edad,rut);
+		if(usuarioDAO.obtenerCliente(cliente.getId()) != null) {
+			usuarioDAO.actualizarCliente(cliente);
+			System.out.println("El cliente se ha actualizado correctamente");
+		}else {
+			usuarioDAO.crearCliente(cliente);
+			System.out.println("El cliente se ha ingresado correctamente");
+		}
 	}
 		
 }

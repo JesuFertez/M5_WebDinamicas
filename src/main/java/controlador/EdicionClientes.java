@@ -7,7 +7,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import implementacion.ClienteDAOImpl;
 import implementacion.UsuarioDAOImpl;
+import interfaces.IClienteDAO;
 import interfaces.IUsuarioDAO;
 import model.Cliente;
 
@@ -17,7 +19,7 @@ import model.Cliente;
 @WebServlet("/EdicionClientes")
 public class EdicionClientes extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	private IUsuarioDAO usuarioDAO = new UsuarioDAOImpl();
+	private IClienteDAO usuarioDAO = new ClienteDAOImpl();
 
 	/**
 	 * @see HttpServlet#HttpServlet()
@@ -44,27 +46,5 @@ public class EdicionClientes extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
-
-			int id = Integer.valueOf(request.getParameter("idCliente"));
-			System.out.println(id);
-			String nombres = request.getParameter("nombresCliente");
-			System.out.println(nombres);
-			String apellidos = request.getParameter("apellidos");
-			System.out.println(apellidos);
-			int telefono = Integer.valueOf(request.getParameter("telefono"));
-
-			String direccion = request.getParameter("direccion");
-			String comuna = request.getParameter("comuna");
-			int edad = Integer.valueOf(request.getParameter("edad"));
-			int rut = Integer.valueOf(request.getParameter("rut"));
-
-			Cliente cliente = new Cliente(id,nombres,apellidos,telefono,direccion,comuna,edad,rut);
-			if(usuarioDAO.obtenerCliente(cliente.getId()) != null) {
-				usuarioDAO.actualizarCliente(cliente);
-				System.out.println("El cliente se ha actualizado correctamente");
-			}else {
-				usuarioDAO.crearCliente(cliente);
-				System.out.println("El cliente se ha ingresado correctamente");
-			}
 	}
 }
