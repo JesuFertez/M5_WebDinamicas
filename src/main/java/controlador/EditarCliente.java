@@ -47,8 +47,8 @@ public class EditarCliente extends HttpServlet {
 			
 	    	int id = Integer.valueOf(request.getParameter("idRescatado").toString());
 			Cliente cliente = usuarioDAO.obtenerCliente(id);
-			request.setAttribute("cliente", cliente);
-			getServletContext().getRequestDispatcher("/views/editar-cliente.jsp").forward(request, response);
+			request.setAttribute("usuario", cliente);
+			getServletContext().getRequestDispatcher("/views/editar-usuario.jsp").forward(request, response);
 			
 	    } else {
 	    	//redireccionando al login
@@ -61,9 +61,9 @@ public class EditarCliente extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		int id = Integer.valueOf(request.getParameter("idCliente"));
+		int id = Integer.valueOf(request.getParameter("idUsuario"));
 		System.out.println(id);
-		String nombres = request.getParameter("nombresCliente");
+		String nombres = request.getParameter("nombres");
 		System.out.println(nombres);
 		String apellidos = request.getParameter("apellidos");
 		System.out.println(apellidos);
@@ -74,7 +74,7 @@ public class EditarCliente extends HttpServlet {
 		int edad = Integer.valueOf(request.getParameter("edad"));
 		int rut = Integer.valueOf(request.getParameter("rut"));
 
-		Cliente cliente = new Cliente(id,"Juan","9874",nombres,apellidos,telefono,direccion,comuna,edad,rut);
+		Cliente cliente = new Cliente(id,nombres,apellidos,telefono,direccion,comuna,edad,rut);
 		if(usuarioDAO.obtenerCliente(cliente.getId()) != null) {
 			usuarioDAO.actualizarCliente(cliente);
 			System.out.println("El cliente se ha actualizado correctamente");
@@ -82,6 +82,7 @@ public class EditarCliente extends HttpServlet {
 			usuarioDAO.crearCliente(cliente);
 			System.out.println("El cliente se ha ingresado correctamente");
 		}
+		response.sendRedirect(request.getContextPath() + "/ListadoUsuarios");
 	}
 		
 }

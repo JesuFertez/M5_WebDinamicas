@@ -28,11 +28,12 @@
 		<!-- Formulario para modificar un usuario -->
 		<div class="card" style="width: 50%;">
 			<div class="card-header bg-dark text-white">
+				<c:set var="usuario" value="${usuario}" />
 				<h2 class="card-title d-flex justify-content-center">Modificar
 					${usuario.tipo}</h2>
 			</div>
 			<div class="card-body">
-				<form action="EditarCliente" class="row" method="post">
+				<form action="Editar${usuario.tipo}" class="row" method="post">
 					<div class="col-md-6 mb-3">
 						<label for="nombre" class="form-label">Nombre</label> <input
 							type="text" class="form-control" name="nombre"
@@ -59,31 +60,31 @@
 							<h3>Datos del cliente</h3>
 							<div>
 								<label for="nombres" class="form-label">Nombres</label><input
-									type="text" class="form-control" name="nombres" required>
+									value="${usuario.nombres}" type="text" class="form-control" name="nombres" required>
 							</div>
 							<div>
 								<label for="apellidos" class="form-label">Apellidos</label><input
-									type="text" class="form-control" name="apellidos" required>
+									value="${usuario.apellidos}" type="text" class="form-control" name="apellidos" required>
 							</div>
 							<div>
 								<label for="telefono" class="form-label">Telefono</label><input
-									type="text" class="form-control" name="telefono" required>
+									value="${usuario.telefono}" type="text" class="form-control" name="telefono" required>
 							</div>
 							<div>
 								<label for="direccion" class="form-label">Dirección</label><input
-									type="text" class="form-control" name="direccion" required>
+									value="${usuario.direccion}" type="text" class="form-control" name="direccion" required>
 							</div>
 							<div>
 								<label for="comuna" class="form-label">Comuna</label><input
-									type="text" class="form-control" name="comuna" required>
+									value="${usuario.comuna}" type="text" class="form-control" name="comuna" required>
 							</div>
 							<div>
 								<label for="edad" class="form-label">Edad</label><input
-									type="text" class="form-control" name="edad" required>
+									value="${usuario.edad}" type="text" class="form-control" name="edad" required>
 							</div>
 							<div>
 								<label for="rut" class="form-label">Rut</label><input
-									type="text" class="form-control" name="rut" required>
+									value="${usuario.rut}" type="text" class="form-control" name="rut" required>
 							</div>
 
 						</c:when>
@@ -123,6 +124,7 @@
 					</c:choose>
 
 					<div class="col-md-12">
+						<input type="hidden" name="idUsuario" value="${usuario.id}">
 						<button type="submit" class="btn btn-secondary w-100 mt-4">Guardar cambios</button>
 					</div>
 				</form>
