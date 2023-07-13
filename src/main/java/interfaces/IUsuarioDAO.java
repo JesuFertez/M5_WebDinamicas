@@ -12,7 +12,4 @@ public interface IUsuarioDAO {
 	public Usuario obtenerUsuario(int id);
 	public int actualizarUsuario(Usuario usu);
 	public int borrarUsuario(Usuario usu);
-	public void actualizarCliente(Usuario usuario);
-	public int crearCliente(Cliente cliente);
-	public Cliente obtenerCliente (int id);
 }

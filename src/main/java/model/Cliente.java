@@ -38,7 +38,7 @@ public class Cliente extends Usuario {
 
 	public Cliente(int id, String nombres, String apellidos, int telefono, String direccion,
 			String comuna, int edad, int rut) {
-		super(id);
+		super(id, TipoUsuario.Cliente);
 		this.nombres = nombres;
 		this.apellidos = apellidos;
 		this.telefono = telefono;
