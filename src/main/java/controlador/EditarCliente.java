@@ -37,11 +37,15 @@ public class EditarCliente extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		
-		//Se obtiene la sesion actual			
+		//Se obtiene la sesion actual
 		HttpSession session = request.getSession();
+		int id = Integer.valueOf(request.getParameter("idRescatado").toString());
+		session.setAttribute("idCliente", id);
+		
 		//validacion de usuario logeado
 	    if (session != null && session.getAttribute("usuario") != null) {
-			getServletContext().getRequestDispatcher("/views/editar-usuario.jsp").forward(request, response);
+			getServletContext().getRequestDispatcher("/views/editar-cliente.jsp").forward(request, response);
+			
 	    } else {
 	    	//redireccionando al login
 	    	response.sendRedirect(request.getContextPath() + "/Login");
@@ -52,16 +56,6 @@ public class EditarCliente extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		
-		try {
-			int id = Integer.valueOf(request.getParameter("id"));
-			usuarioDAO cliente = ;
-				// Redireccionar a de editar
-				getServletContext().getRequestDispatcher("/views/editar-usuario.jsp").forward(request, response);
-		} catch (Exception e) {
-			System.out.println("Error en EditarCliente Servlet: " + e);
-		}
+	
 	}
-
 }
