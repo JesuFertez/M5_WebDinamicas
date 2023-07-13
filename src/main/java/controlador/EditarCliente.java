@@ -46,6 +46,12 @@ public class EditarCliente extends HttpServlet {
 	    if (session != null && session.getAttribute("usuario") != null) {
 			getServletContext().getRequestDispatcher("/views/editar-cliente.jsp").forward(request, response);
 			
+	    	String id = request.getParameter("id");
+	    	
+	    	Usuario usuario = usuarioDAO.obtenerUsuario(Integer.parseInt(id));
+	    	request.setAttribute("usuario", usuario);
+	    	
+			getServletContext().getRequestDispatcher("/views/editar-usuario.jsp").forward(request, response);
 	    } else {
 	    	//redireccionando al login
 	    	response.sendRedirect(request.getContextPath() + "/Login");

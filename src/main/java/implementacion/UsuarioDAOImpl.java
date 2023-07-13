@@ -72,16 +72,18 @@ public class UsuarioDAOImpl implements IUsuarioDAO {
 
 	@Override
 	public Usuario obtenerUsuario(int id) {
-		String SQL_SELECT_FROM =" SELECT id nombre, tipo from Usuario WHERE id=";
+		String SQL_SELECT_FROM =" SELECT id, nombre, tipo from Usuarios WHERE id=";
 		Usuario usu=null;
 		
 		try {
 			Connection conn = Conexion.getConn();
 			Statement stmt =conn.createStatement();
 			ResultSet rs= stmt.executeQuery(SQL_SELECT_FROM+id);
-			
 			if(rs.next()) {
-				usu = new Usuario(rs.getInt(id), rs.getString("nombre"), TipoUsuario.parse(rs.getString("tipo")));
+				usu = new Usuario();
+				usu.setId(rs.getInt(1));
+				usu.setNombre(rs.getString(2));
+				usu.setTipo(TipoUsuario.parse(rs.getString(3)));
 			}
 			rs.close();
 			stmt.close();
@@ -95,7 +97,7 @@ public class UsuarioDAOImpl implements IUsuarioDAO {
 
 	@Override
 	public int actualizarUsuario(Usuario usu) {
-		String SQL_UPDATE =" UPDATE Usuario SET nombre = ?, SET contraseña = ?, SET tipo = ? WHERE id = ?";
+		String SQL_UPDATE =" UPDATE Usuarios SET nombre = ?, SET contraseña = ?, SET tipo = ? WHERE id = ?";
 		int registros=0;
 		try {
 			Connection conn = Conexion.getConn();
@@ -118,7 +120,7 @@ public class UsuarioDAOImpl implements IUsuarioDAO {
 	}
 
 	@Override
-	public int borarUsuario(Usuario usu) {
+	public int borrarUsuario(Usuario usu) {
 		String SQL_DELETE="DELETE FROM Usuarios WHERE id =?";
 		int registros =0;
 		
@@ -137,7 +139,6 @@ public class UsuarioDAOImpl implements IUsuarioDAO {
 		
 		return registros;
 	}
-	
 	//Metodos para los tipos de usuarios
 	public void actualizarCliente(Usuario usuario) {
 	    // Validar si el usuario es del tipo Cliente
