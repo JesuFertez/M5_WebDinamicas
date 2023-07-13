@@ -34,7 +34,7 @@
 			</div>
 			
 			<div class="card-body">
-				<form action="EdicionClientes" class="row" method="post">
+				<form action="EditarCliente" class="row" method="post">
 					<div class="col-md-5 mb-3">
 						<label for="nombres" class="form-label">Nombres</label> 
 						<input value="${cliente.getNombres()}" type="text" class="form-control" name="nombresCliente" required>
