@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import implementacion.UsuarioDaoImpl;
+import implementacion.UsuarioDAOImpl;
 import interfaces.IUsuarioDAO;
 import model.Cliente;
 import model.TipoUsuario;
@@ -21,7 +21,7 @@ import utils.ValidarDatos;
 @WebServlet("/EditarAdministrativo")
 public class EditarAdministrativo extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	private IUsuarioDAO usuarioDAO = new UsuarioDaoImpl();
+	private IUsuarioDAO usuarioDAO = new UsuarioDAOImpl();
        
     /**
      * @see HttpServlet#HttpServlet()
@@ -41,6 +41,10 @@ public class EditarAdministrativo extends HttpServlet {
 		HttpSession session = request.getSession();
 		//validacion de usuario logeado
 	    if (session != null && session.getAttribute("usuario") != null) {
+	    	String id = request.getParameter("id");
+	    	
+	    	Usuario usuario = usuarioDAO.obtenerUsuario(Integer.parseInt(id));
+	    	request.setAttribute("usuario", usuario);
 			getServletContext().getRequestDispatcher("/views/editar-usuario.jsp").forward(request, response);
 	    } else {
 	    	//redireccionando al login
