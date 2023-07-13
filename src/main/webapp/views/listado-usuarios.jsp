@@ -56,7 +56,7 @@
 		                  <td><c:out value="${usu.getTipo()}"></c:out></td>
 		                  <td>
 		                    <!-- Enviar el ID del usuario al servlet EditarUsuario al hacer clic en el bot�n "Editar" -->
-		                    <form action="Editar${usu.getTipo()}" method="post">
+		                    <form action="Editar${usu.getTipo()}" method="get">
 		                        <input type="hidden" name="idRescatado" value="${usu.getId()}">
 		                         <button type="submit" class="btn btn-primary">
    									 <i class="bi bi-pencil-square"></i> Editar
