@@ -10,6 +10,6 @@ public interface IUsuarioDAO {
 	public List<Usuario>obtenerUsuarios();
 	public Usuario obtenerUsuario(int id);
 	public int actualizarUsuario(Usuario usu);
-	public int borarUsuario(Usuario usu);
+	public int borrarUsuario(Usuario usu);
 
 }

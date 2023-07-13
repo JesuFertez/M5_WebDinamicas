@@ -36,6 +36,11 @@
 				        <a href="ListadoUsuarios" class="alert-link">Listar Usuarios</a>
 				    </c:when>
 				</c:choose>
+								<c:choose>
+				    <c:when test="${mensaje eq 'Usuario modificado correctamente'}">
+				        <a href="ListadoUsuarios" class="alert-link">Listar Usuarios</a>
+				    </c:when>
+				</c:choose>
 			</p>
 		</div>
 	</div>

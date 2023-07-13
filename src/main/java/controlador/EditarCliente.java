@@ -41,6 +41,11 @@ public class EditarCliente extends HttpServlet {
 		HttpSession session = request.getSession();
 		//validacion de usuario logeado
 	    if (session != null && session.getAttribute("usuario") != null) {
+	    	String id = request.getParameter("id");
+	    	
+	    	Usuario usuario = usuarioDAO.obtenerUsuario(Integer.parseInt(id));
+	    	request.setAttribute("usuario", usuario);
+	    	
 			getServletContext().getRequestDispatcher("/views/editar-usuario.jsp").forward(request, response);
 	    } else {
 	    	//redireccionando al login
@@ -55,10 +60,24 @@ public class EditarCliente extends HttpServlet {
 		// TODO Auto-generated method stub
 		
 		try {
-			int id = Integer.valueOf(request.getParameter("id"));
-			usuarioDAO cliente = ;
-				// Redireccionar a de editar
-				getServletContext().getRequestDispatcher("/views/editar-usuario.jsp").forward(request, response);
+			String nombre = request.getParameter("nombre");
+			String contrasena = request.getParameter("contraseña");
+			String tipo = request.getParameter("tipo");
+
+			// Validaciones de campos del formulario
+			boolean todoOk = (ValidarDatos.esObligatorio(nombre) && ValidarDatos.esObligatorio(contrasena)
+					&& ValidarDatos.esObligatorio(tipo));
+
+			if (todoOk) {
+				Usuario usuario = new Usuario(nombre, contrasena, TipoUsuario.parse(tipo));
+				usuarioDAO.actualizarUsuario(usuario);
+				request.setAttribute("mensaje", "Usuario modificado correctamente");
+
+				// Redireccionar a web de exito
+				getServletContext().getRequestDispatcher("/views/exito.jsp").forward(request, response);
+			} else {
+				getServletContext().getRequestDispatcher("/views/listado-usuarios.jsp").forward(request, response);
+			}
 		} catch (Exception e) {
 			System.out.println("Error en EditarCliente Servlet: " + e);
 		}
