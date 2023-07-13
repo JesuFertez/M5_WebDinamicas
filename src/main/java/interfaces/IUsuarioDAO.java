@@ -2,6 +2,7 @@ package interfaces;
 
 import java.util.List;
 
+import model.Cliente;
 import model.Usuario;
 
 public interface IUsuarioDAO {
@@ -11,5 +12,4 @@ public interface IUsuarioDAO {
 	public Usuario obtenerUsuario(int id);
 	public int actualizarUsuario(Usuario usu);
 	public int borrarUsuario(Usuario usu);
-
 }

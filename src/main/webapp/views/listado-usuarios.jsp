@@ -38,28 +38,35 @@
 					</div>
 				</c:when>
 				<c:otherwise>
-          <table class="table table-striped table-bordered">
-            <thead class="table-dark">
-              <tr>
-                <!-- Capacitacion(int identificador, int rutCliente, String dia, String hora, String lugar, String duracion,int cantidadAsistentes) -->
-                <th>Id</th>
-                <th>Nombre</th>
-                <th>Tipo</th>
-                <th>Modificar</th>
-              </tr>
-            </thead>
-            <tbody>
-              <!-- Ciclo forEach con JSTL para imprimir datos de la lista -->
-              <c:forEach var="usu" items="${listaUsuarios}">
-                <tr>
-                  <td><c:out value="${usu.getId()}"></c:out></td>
-                  <td><c:out value="${usu.getNombre()}"></c:out></td>
-                  <td><c:out value="${usu.getTipo()}"></c:out></td>
-                  <td><a href="EditarCliente?id=${usu.getId()}"><button type="submit" class="btn btn-outline-dark btn-sm"><i class="bi bi-pencil-square"></i> Editar</button></a></td>
-                </tr>
-              </c:forEach>
-            </tbody>
-          </table>
+		          <table class="table table-striped table-bordered">
+		            <thead class="table-dark">
+		              <tr>
+		              	<th>Id</th>
+		                <th>Nombre</th>
+		                <th>Tipo</th>
+		                <th>Modificar</th>
+		              </tr>
+		            </thead>
+		            <tbody>
+		              <!-- Ciclo forEach con JSTL para imprimir datos de la lista -->
+		              <c:forEach var="usu" items="${listaUsuarios}">
+		                <tr>
+		                  <td><c:out value="${usu.getId()}"></c:out></td>
+		                  <td><c:out value="${usu.getNombre()}"></c:out></td>
+		                  <td><c:out value="${usu.getTipo()}"></c:out></td>
+		                  <td>
+		                    <!-- Enviar el ID del usuario al servlet EditarUsuario al hacer clic en el bot�n "Editar" -->
+		                    <form action="Editar${usu.getTipo()}" method="get">
+		                        <input type="hidden" name="idRescatado" value="${usu.getId()}">
+		                         <button type="submit" class="btn btn-primary">
+   									 <i class="bi bi-pencil-square"></i> Editar
+  								</button>
+		                    </form>
+		                  </td>
+		                </tr>
+		              </c:forEach>
+		            </tbody>
+		          </table>
 				</c:otherwise>
 			</c:choose>
 		</section>

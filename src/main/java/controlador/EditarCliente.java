@@ -8,7 +8,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import implementacion.ClienteDAOImpl;
 import implementacion.UsuarioDAOImpl;
+import interfaces.IClienteDAO;
 import interfaces.IUsuarioDAO;
 import model.Cliente;
 import model.TipoUsuario;
@@ -21,7 +23,7 @@ import utils.ValidarDatos;
 @WebServlet("/EditarCliente")
 public class EditarCliente extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	private IUsuarioDAO usuarioDAO = new UsuarioDAOImpl();
+	private IClienteDAO usuarioDAO = new ClienteDAOImpl();
        
     /**
      * @see HttpServlet#HttpServlet()
@@ -37,16 +39,17 @@ public class EditarCliente extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		
-		//Se obtiene la sesion actual			
+		//Se obtiene la sesion actual
 		HttpSession session = request.getSession();
+		
 		//validacion de usuario logeado
 	    if (session != null && session.getAttribute("usuario") != null) {
-	    	String id = request.getParameter("id");
-	    	
-	    	Usuario usuario = usuarioDAO.obtenerUsuario(Integer.parseInt(id));
-	    	request.setAttribute("usuario", usuario);
-	    	
+			
+	    	int id = Integer.valueOf(request.getParameter("idRescatado").toString());
+			Cliente cliente = usuarioDAO.obtenerCliente(id);
+			request.setAttribute("usuario", cliente);
 			getServletContext().getRequestDispatcher("/views/editar-usuario.jsp").forward(request, response);
+			
 	    } else {
 	    	//redireccionando al login
 	    	response.sendRedirect(request.getContextPath() + "/Login");
@@ -57,30 +60,29 @@ public class EditarCliente extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		
-		try {
-			String nombre = request.getParameter("nombre");
-			String contrasena = request.getParameter("contraseña");
-			String tipo = request.getParameter("tipo");
 
-			// Validaciones de campos del formulario
-			boolean todoOk = (ValidarDatos.esObligatorio(nombre) && ValidarDatos.esObligatorio(contrasena)
-					&& ValidarDatos.esObligatorio(tipo));
+		int id = Integer.valueOf(request.getParameter("idUsuario"));
+		System.out.println(id);
+		String nombres = request.getParameter("nombres");
+		System.out.println(nombres);
+		String apellidos = request.getParameter("apellidos");
+		System.out.println(apellidos);
+		int telefono = Integer.valueOf(request.getParameter("telefono"));
 
-			if (todoOk) {
-				Usuario usuario = new Usuario(nombre, contrasena, TipoUsuario.parse(tipo));
-				usuarioDAO.actualizarUsuario(usuario);
-				request.setAttribute("mensaje", "Usuario modificado correctamente");
+		String direccion = request.getParameter("direccion");
+		String comuna = request.getParameter("comuna");
+		int edad = Integer.valueOf(request.getParameter("edad"));
+		int rut = Integer.valueOf(request.getParameter("rut"));
 
-				// Redireccionar a web de exito
-				getServletContext().getRequestDispatcher("/views/exito.jsp").forward(request, response);
-			} else {
-				getServletContext().getRequestDispatcher("/views/listado-usuarios.jsp").forward(request, response);
-			}
-		} catch (Exception e) {
-			System.out.println("Error en EditarCliente Servlet: " + e);
+		Cliente cliente = new Cliente(id,nombres,apellidos,telefono,direccion,comuna,edad,rut);
+		if(usuarioDAO.obtenerCliente(cliente.getId()) != null) {
+			usuarioDAO.actualizarCliente(cliente);
+			System.out.println("El cliente se ha actualizado correctamente");
+		}else {
+			usuarioDAO.crearCliente(cliente);
+			System.out.println("El cliente se ha ingresado correctamente");
 		}
+		response.sendRedirect(request.getContextPath() + "/ListadoUsuarios");
 	}
-
+		
 }

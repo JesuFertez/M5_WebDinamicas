@@ -12,6 +12,16 @@ public class Cliente extends Usuario {
 	private int rut;
 
 	public Cliente() {
+		super();
+	}
+	
+	public Cliente(int id) {
+		super(id);
+	}
+	
+	
+	public Cliente(int id, String nombreUsuario, String contraseña, TipoUsuario tipo) {
+		super(id,nombreUsuario,contraseña,tipo);
 	}
 
 	public Cliente(int id, String nombreUsuario,String contraseña, String nombres, String apellidos, int telefono, String direccion,
@@ -26,6 +36,18 @@ public class Cliente extends Usuario {
 		this.rut = rut;
 	}
 
+	public Cliente(int id, String nombres, String apellidos, int telefono, String direccion,
+			String comuna, int edad, int rut) {
+		super(id, TipoUsuario.Cliente);
+		this.nombres = nombres;
+		this.apellidos = apellidos;
+		this.telefono = telefono;
+		this.direccion = direccion;
+		this.comuna = comuna;
+		this.edad = edad;
+		this.rut = rut;
+	}
+	
 	public String getNombres() {
 		return nombres;
 	}
