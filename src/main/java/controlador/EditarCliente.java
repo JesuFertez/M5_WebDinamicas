@@ -39,19 +39,15 @@ public class EditarCliente extends HttpServlet {
 		
 		//Se obtiene la sesion actual
 		HttpSession session = request.getSession();
-		int id = Integer.valueOf(request.getParameter("idRescatado").toString());
-		session.setAttribute("idCliente", id);
 		
 		//validacion de usuario logeado
 	    if (session != null && session.getAttribute("usuario") != null) {
+			
+	    	int id = Integer.valueOf(request.getParameter("idRescatado").toString());
+			Cliente cliente = usuarioDAO.obtenerCliente(id);
+			request.setAttribute("usuario", cliente);
 			getServletContext().getRequestDispatcher("/views/editar-cliente.jsp").forward(request, response);
 			
-	    	String id = request.getParameter("id");
-	    	
-	    	Usuario usuario = usuarioDAO.obtenerUsuario(Integer.parseInt(id));
-	    	request.setAttribute("usuario", usuario);
-	    	
-			getServletContext().getRequestDispatcher("/views/editar-usuario.jsp").forward(request, response);
 	    } else {
 	    	//redireccionando al login
 	    	response.sendRedirect(request.getContextPath() + "/Login");
@@ -64,4 +60,5 @@ public class EditarCliente extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	
 	}
+		
 }

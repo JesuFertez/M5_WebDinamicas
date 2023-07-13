@@ -29,42 +29,38 @@
 		<!-- Formulario para modificar un cliente -->
 		<div class="card" style="width: 50%;">
 			<div class="card-header bg-dark text-white">
-				<h2 class="card-title d-flex justify-content-center">Modificar Cliente</h2>
+				<h2 class="card-title d-flex justify-content-center">Modificar ${usuario.getTipo()}</h2>
 			</div>
 			
 			<div class="card-body">
 				<form action="EdicionClientes" class="row" method="post">
-					<div class="col-md-4 mb-3">
-						<label for="id" class="form-label">id</label> 
-						<input type="text"value="${idCliente}" class="form-control" name="idCliente" readonly >
-					</div>
-					<div class="col-md-6 mb-3">
+					<div class="col-md-5 mb-3">
 						<label for="nombres" class="form-label">Nombres</label> 
-						<input type="text" class="form-control" name="nombresCliente" required>
+						<input value="${usuario.getNombres()}" type="text" class="form-control" name="nombresCliente" required>
 					</div>
-					<div class="col-md-6 mb-3">
+					<div class="col-md-5 mb-3">
 						<label for="apellidos" class="form-label">Apellidos</label> 
-						<input type="text" class="form-control" name="apellidos" required>
+						<input value="${usuario.getApellidos()}" type="text" class="form-control" name="apellidos" required>
+					</div>
+					<div class="col-md-2 mb-3">
+						<label for="edad" class="form-label">edad</label> 
+						<input value="${usuario.getNombres()}" type="text" class="form-control" name="edad" required>
 					</div>
 					<div class="col-md-3 mb-3">
-						<label for="edad" class="form-label">edad</label> 
-						<input type="text" class="form-control" name="edad" required>
-					</div>
-					<div class="col-md-4 mb-3">
 						<label for="rut" class="form-label">rut</label> 
-						<input type="text"class="form-control" name="rut" required>
+						<input value="${usuario.getEdad()}" type="text"class="form-control" name="rut" required>
 					</div>
-					<div class="col-md-5 mb-3">
+					<div class="col-md-3 mb-3">
 						<label for="telefono" class="form-label">Telefono</label> 
-						<input type="text" class="form-control" name="telefono" required>
+						<input value="${usuario.getTelefono()}" type="text" class="form-control" name="telefono" required>
 					</div>
-					<div class="col-md-7 mb-3">
+					<div class="col-md-3 mb-3">
 						<label for="direccion" class="form-label">Dirección</label> 
-						<input type="text" class="form-control" name="direccion" required>
+						<input value="${usuario.getDireccion()}" type="text" class="form-control" name="direccion" required>
 					</div>
-					<div class="col-md-5 mb-3">
+					<div class="col-md-3 mb-3">
 						<label for="comuna" class="form-label">Comuna</label> 
-						<input type="text" class="form-control" name="comuna" required>
+						<input value="${usuario.getComuna()}" type="text" class="form-control" name="comuna" required>
 					</div>
 
 					<div class="col-md-12">
