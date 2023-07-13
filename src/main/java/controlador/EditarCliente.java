@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import implementacion.UsuarioDaoImpl;
+import implementacion.UsuarioDAOImpl;
 import interfaces.IUsuarioDAO;
 import model.Cliente;
 import model.TipoUsuario;
@@ -21,7 +21,7 @@ import utils.ValidarDatos;
 @WebServlet("/EditarCliente")
 public class EditarCliente extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	private IUsuarioDAO usuarioDAO = new UsuarioDaoImpl();
+	private IUsuarioDAO usuarioDAO = new UsuarioDAOImpl();
        
     /**
      * @see HttpServlet#HttpServlet()
@@ -53,27 +53,14 @@ public class EditarCliente extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		
 		try {
-			String nombre = request.getParameter("nombre");
-			String contrasena = request.getParameter("contraseña");
-			String tipo = request.getParameter("tipo");
-
-			// Validaciones de campos del formulario
-			boolean todoOk = (ValidarDatos.esObligatorio(nombre) && ValidarDatos.esObligatorio(contrasena)
-					&& ValidarDatos.esObligatorio(tipo));
-
-			if (todoOk) {
-				Usuario usuario = new Usuario(nombre, contrasena, TipoUsuario.parse(tipo));
-				usuarioDAO.crearUsuario(usuario);
-				request.setAttribute("mensaje", "Usuario modificado correctamente");
-
-				// Redireccionar a web de exito
-				getServletContext().getRequestDispatcher("/views/exito.jsp").forward(request, response);
-			} else {
-				getServletContext().getRequestDispatcher("/views/listado-usuarios.jsp").forward(request, response);
-			}
+			int id = Integer.valueOf(request.getParameter("id"));
+			usuarioDAO cliente = ;
+				// Redireccionar a de editar
+				getServletContext().getRequestDispatcher("/views/editar-usuario.jsp").forward(request, response);
 		} catch (Exception e) {
-			System.out.println("Error al modificar usuario Servlet: " + e);
+			System.out.println("Error en EditarCliente Servlet: " + e);
 		}
 	}
 
