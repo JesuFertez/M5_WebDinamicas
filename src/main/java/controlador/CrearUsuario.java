@@ -11,7 +11,7 @@ import javax.servlet.http.HttpSession;
 import model.TipoUsuario;
 import model.Usuario;
 import utils.ValidarDatos;
-import implementacion.UsuarioDaoImpl;
+import implementacion.UsuarioDAOImpl;
 import interfaces.IUsuarioDAO;
 
 /**
@@ -20,7 +20,7 @@ import interfaces.IUsuarioDAO;
 @WebServlet("/CrearUsuario")
 public class CrearUsuario extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	private IUsuarioDAO usuarioDAO = new UsuarioDaoImpl();
+	private IUsuarioDAO usuarioDAO = new UsuarioDAOImpl();
 
        
     /**
