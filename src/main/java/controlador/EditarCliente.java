@@ -37,10 +37,15 @@ public class EditarCliente extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		
-		//Se obtiene la sesion actual			
+		//Se obtiene la sesion actual
 		HttpSession session = request.getSession();
+		int id = Integer.valueOf(request.getParameter("idRescatado").toString());
+		session.setAttribute("idCliente", id);
+		
 		//validacion de usuario logeado
 	    if (session != null && session.getAttribute("usuario") != null) {
+			getServletContext().getRequestDispatcher("/views/editar-cliente.jsp").forward(request, response);
+			
 	    	String id = request.getParameter("id");
 	    	
 	    	Usuario usuario = usuarioDAO.obtenerUsuario(Integer.parseInt(id));
@@ -57,30 +62,6 @@ public class EditarCliente extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		
-		try {
-			String nombre = request.getParameter("nombre");
-			String contrasena = request.getParameter("contraseña");
-			String tipo = request.getParameter("tipo");
-
-			// Validaciones de campos del formulario
-			boolean todoOk = (ValidarDatos.esObligatorio(nombre) && ValidarDatos.esObligatorio(contrasena)
-					&& ValidarDatos.esObligatorio(tipo));
-
-			if (todoOk) {
-				Usuario usuario = new Usuario(nombre, contrasena, TipoUsuario.parse(tipo));
-				usuarioDAO.actualizarUsuario(usuario);
-				request.setAttribute("mensaje", "Usuario modificado correctamente");
-
-				// Redireccionar a web de exito
-				getServletContext().getRequestDispatcher("/views/exito.jsp").forward(request, response);
-			} else {
-				getServletContext().getRequestDispatcher("/views/listado-usuarios.jsp").forward(request, response);
-			}
-		} catch (Exception e) {
-			System.out.println("Error en EditarCliente Servlet: " + e);
-		}
+	
 	}
-
 }
