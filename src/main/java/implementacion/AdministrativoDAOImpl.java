@@ -21,7 +21,7 @@ public class AdministrativoDAOImpl extends UsuarioDAOImpl implements IAdministra
 	    if (usuario.getTipo() == TipoUsuario.Administrativo) {
 	        Administrativo administrativo = (Administrativo) usuario;
 	        // Actualizar los campos específicos del tipo Administrativo en la base de datos
-	        String SQL_UPDATE = "UPDATE Administrativo SET nombre = ?, area = ?, experienciaPrevia = ? WHERE id = ?";
+	        String SQL_UPDATE = "UPDATE Administrativo SET nombre_a = ?, area = ?, experienciaPrevia = ? WHERE id = ?";
 	        try {
 	            Connection conn = Conexion.getConn();
 	            PreparedStatement stmt = conn.prepareStatement(SQL_UPDATE);
@@ -36,7 +36,7 @@ public class AdministrativoDAOImpl extends UsuarioDAOImpl implements IAdministra
 	            e.printStackTrace(System.out);
 	        }
 	        //Actualizar la tabla Usuario
-	        Usuario usuarioAdmin= new Usuario(administrativo.getId(),administrativo.getNombre(),administrativo.getContraseña(),TipoUsuario.Cliente);
+	        Usuario usuarioAdmin= new Usuario(administrativo.getId(),administrativo.getNombre(),administrativo.getContraseña(),TipoUsuario.Administrativo);
 	        actualizarUsuario(usuarioAdmin);
 	    } else {
 	        throw new IllegalArgumentException("El usuario no es del tipo Administrativo.");
@@ -44,7 +44,7 @@ public class AdministrativoDAOImpl extends UsuarioDAOImpl implements IAdministra
 	}
 
 	public List<Usuario> obtenerAdministrativos() {
-	    String SQL_SELECT = "SELECT id, nombre , area, experienciaPrevia FROM Usuarios INNER JOIN Administrativo ON Usuarios.id = Administrativo.id WHERE tipo = 'Administrativo'";
+	    String SQL_SELECT = "SELECT id, nombre_a , area, experienciaPrevia FROM Usuarios INNER JOIN Administrativo ON Usuarios.id = Administrativo.id WHERE tipo = 'Administrativo'";
 	    List<Usuario> administrativos = new ArrayList<>();
 
 	    try {
@@ -104,7 +104,7 @@ public class AdministrativoDAOImpl extends UsuarioDAOImpl implements IAdministra
     }
 
     public int crearAdministrativo(Administrativo administrativo) {
-        String SQL_INSERT = "INSERT INTO Administrativo (id, nombre, area, experienciaPrevia) VALUES (?, ?, ?, ?)";
+        String SQL_INSERT = "INSERT INTO Administrativo (id, nombre_a, area, experienciaPrevia) VALUES (?, ?, ?, ?)";
 
         int registros = 0;
         Connection conn;

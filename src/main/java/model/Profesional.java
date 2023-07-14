@@ -1,10 +1,11 @@
 package model;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 public class Profesional extends Usuario {
 
-	private String nombre;
+	private String nombrePro;
 	private String titulo;
 	private LocalDate fechaIngreso;
 
@@ -14,17 +15,17 @@ public class Profesional extends Usuario {
 	public Profesional(int id, String nombreUsuario, String contraseña, String nombre, String titulo,
 			LocalDate fechaIngreso) {
 		super(id, nombreUsuario, contraseña, TipoUsuario.Profesional);
-		this.nombre = nombre;
+		this.nombrePro = nombre;
 		this.titulo = titulo;
 		this.fechaIngreso = fechaIngreso;
 	}
 	
-	public String getNombre() {
-		return nombre;
+	public String getNombrePro() {
+		return nombrePro;
 	}
 
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
+	public void setNombrePro(String nombre) {
+		this.nombrePro = nombre;
 	}
 
 	public String getTitulo() {
@@ -42,10 +43,14 @@ public class Profesional extends Usuario {
 	public void setFechaIngreso(LocalDate fechaIngreso) {
 		this.fechaIngreso = fechaIngreso;
 	}
-
+	public String obtenerFechaFormat() {
+		DateTimeFormatter formatoSalida = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        String fechaIngresoFormateada = fechaIngreso.format(formatoSalida);
+		return fechaIngresoFormateada;
+	}
 	@Override
 	public String toString() {
-		return super.toString()+" [nombre=" + nombre + ", titulo=" + titulo + ", fechaIngreso=" + fechaIngreso + "]";
+		return super.toString()+" [nombre=" + nombrePro + ", titulo=" + titulo + ", fechaIngreso=" + fechaIngreso + "]";
 	}
 	
 
