@@ -2,6 +2,7 @@ package controlador;
 
 import java.io.IOException;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -70,26 +71,38 @@ public class EditarProfesional extends HttpServlet {
 		String nombreUsuario = request.getParameter("nombreUsuario");
 		String nombre = request.getParameter("nombre");
 		String titulo = request.getParameter("titulo");
-		LocalDate fechaIngreso = LocalDate.parse(request.getParameter("fechaIngreso"));
 		int id = Integer.valueOf(request.getParameter("idUsuario"));
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+		LocalDate fechaIngreso = null;
+		try {
+			fechaIngreso = LocalDate.parse(request.getParameter("fechaIngreso"), formatter);
+		} catch (Exception e) {
+			System.out.println("Servlet EditarProfesional - error en LocalDate.parse");
+			System.out.println("fechaIngreso no valida "+ fechaIngreso);
+			System.out.println(e);
+		}
+		if(fechaIngreso == null) {
+			getServletContext().getRequestDispatcher("/views/listado-usuarios.jsp").forward(request, response);
+		}
 		
 		Profesional pro = new Profesional(id,nombreUsuario,contrasena,nombre,titulo,fechaIngreso);
+		System.out.println(pro);
 		String mensaje;
 		Boolean mostrarAlert = false;
 		if(usuarioDAO.obtenerProfesional(pro.getId()) != null) {
 			usuarioDAO.actualizarProfesional(pro);
+			System.out.println("El profesional se ha actualizado correctamente");
 			mensaje="El profesional se ha actualizado correctamente";
 			mostrarAlert= true;
-			System.out.println("El cliente se ha actualizado correctamente");
 		}else {
 			usuarioDAO.crearProfesional(pro);
+			System.out.println("El profesional se ha ingresado correctamente");
 			mensaje="El profesional se ha actualizado correctamente";
 			mostrarAlert= true;
-			System.out.println("El cliente se ha ingresado correctamente");
 		}
 		request.setAttribute("mostrarAlert", mostrarAlert);
 		request.setAttribute("mensaje", mensaje);
-		response.sendRedirect(request.getContextPath() + "/ListadoUsuarios");
+		getServletContext().getRequestDispatcher("/views/listado-usuarios.jsp").forward(request, response);
 	}
 
 }
