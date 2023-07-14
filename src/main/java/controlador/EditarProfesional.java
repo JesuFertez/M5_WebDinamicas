@@ -1,6 +1,8 @@
 package controlador;
 
 import java.io.IOException;
+import java.time.LocalDate;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -8,12 +10,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import implementacion.UsuarioDAOImpl;
-import interfaces.IUsuarioDAO;
-import model.Cliente;
+import implementacion.ProfesionalDAOImpl;
+import interfaces.IProfesionalDAO;
+import model.Profesional;
 import model.TipoUsuario;
 import model.Usuario;
-import utils.ValidarDatos;
 
 /**
  * Servlet implementation class EditarCliente
@@ -21,7 +22,7 @@ import utils.ValidarDatos;
 @WebServlet("/EditarProfesional")
 public class EditarProfesional extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	private IUsuarioDAO usuarioDAO = new UsuarioDAOImpl();
+	private IProfesionalDAO usuarioDAO = new ProfesionalDAOImpl();
        
     /**
      * @see HttpServlet#HttpServlet()
@@ -41,11 +42,19 @@ public class EditarProfesional extends HttpServlet {
 		HttpSession session = request.getSession();
 		//validacion de usuario logeado
 	    if (session != null && session.getAttribute("usuario") != null) {
-	    	String id = request.getParameter("id");
-	    	
-	    	Usuario usuario = usuarioDAO.obtenerUsuario(Integer.parseInt(id));
-	    	request.setAttribute("usuario", usuario);
+			
+	    	int id = Integer.valueOf(request.getParameter("idRescatado").toString());
+			Profesional pro = usuarioDAO.obtenerProfesional(id);
+	    	if(pro == null) {
+	    		Usuario usu = usuarioDAO.obtenerUsuario(id);
+	    		pro = new Profesional();
+	    		pro.setId(id);
+	    		pro.setNombre(usu.getNombre());
+	    		pro.setTipo(TipoUsuario.Profesional);
+	    	}
+			request.setAttribute("usuario", pro);
 			getServletContext().getRequestDispatcher("/views/editar-usuario.jsp").forward(request, response);
+			
 	    } else {
 	    	//redireccionando al login
 	    	response.sendRedirect(request.getContextPath() + "/Login");
@@ -57,28 +66,30 @@ public class EditarProfesional extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		try {
-			String nombre = request.getParameter("nombre");
-			String contrasena = request.getParameter("contraseña");
-			String tipo = request.getParameter("tipo");
-
-			// Validaciones de campos del formulario
-			boolean todoOk = (ValidarDatos.esObligatorio(nombre) && ValidarDatos.esObligatorio(contrasena)
-					&& ValidarDatos.esObligatorio(tipo));
-
-			if (todoOk) {
-				Usuario usuario = new Usuario(nombre, contrasena, TipoUsuario.parse(tipo));
-				usuarioDAO.actualizarUsuario(usuario);
-				request.setAttribute("mensaje", "Usuario modificado correctamente");
-
-				// Redireccionar a web de exito
-				getServletContext().getRequestDispatcher("/views/exito.jsp").forward(request, response);
-			} else {
-				getServletContext().getRequestDispatcher("/views/listado-usuarios.jsp").forward(request, response);
-			}
-		} catch (Exception e) {
-			System.out.println("Error al modificar usuario Servlet: " + e);
+		String contrasena = request.getParameter("contraseña");
+		String nombreUsuario = request.getParameter("nombreUsuario");
+		String nombre = request.getParameter("nombre");
+		String titulo = request.getParameter("titulo");
+		LocalDate fechaIngreso = LocalDate.parse(request.getParameter("fechaIngreso"));
+		int id = Integer.valueOf(request.getParameter("idUsuario"));
+		
+		Profesional pro = new Profesional(id,nombreUsuario,contrasena,nombre,titulo,fechaIngreso);
+		String mensaje;
+		Boolean mostrarAlert = false;
+		if(usuarioDAO.obtenerProfesional(pro.getId()) != null) {
+			usuarioDAO.actualizarProfesional(pro);
+			mensaje="El profesional se ha actualizado correctamente";
+			mostrarAlert= true;
+			System.out.println("El cliente se ha actualizado correctamente");
+		}else {
+			usuarioDAO.crearProfesional(pro);
+			mensaje="El profesional se ha actualizado correctamente";
+			mostrarAlert= true;
+			System.out.println("El cliente se ha ingresado correctamente");
 		}
+		request.setAttribute("mostrarAlert", mostrarAlert);
+		request.setAttribute("mensaje", mensaje);
+		response.sendRedirect(request.getContextPath() + "/ListadoUsuarios");
 	}
 
 }

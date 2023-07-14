@@ -1,21 +1,35 @@
 package model;
 
-import java.time.LocalDate;
 
 public class Administrativo extends Usuario {
 	
-	private String nombre;
+	private String nombreAdmin;
 	private String area;
 	private String experienciaPrevia;
 
 	public Administrativo() {
+		super();
+	}
+	
+	public Administrativo(int id, String nombreUsuario, String contraseña, TipoUsuario tipo) {
+		super(id,nombreUsuario,contraseña,tipo);
 	}
 
-	public Administrativo(int id, String nombreUsuario,String contraseña,String nombre, String area, String experienciaPrevia) {
+	public Administrativo(int id, String nombreUsuario,String contraseña,String nombreAdmin, String area, String experienciaPrevia) {
 		super(id, nombreUsuario,contraseña, TipoUsuario.Administrativo);
-		this.nombre= nombre;
+		this.nombreAdmin= nombreAdmin;
 		this.area = area;
 		this.experienciaPrevia = experienciaPrevia;
+	}
+	
+	
+	
+	public String getNombreAdmin() {
+		return nombreAdmin;
+	}
+
+	public void setNombreAdmin(String nombre) {
+		this.nombreAdmin = nombre;
 	}
 
 	public String getArea() {
@@ -36,9 +50,7 @@ public class Administrativo extends Usuario {
 
 	@Override
 	public String toString() {
-		return super.toString() +" [nombre=" + nombre + ", area=" + area + ", experienciaPrevia=" + experienciaPrevia + "]";
+		return super.toString() +" [nombre=" + nombreAdmin + ", area=" + area + ", experienciaPrevia=" + experienciaPrevia + "]";
 	}
-
-	
 
 }

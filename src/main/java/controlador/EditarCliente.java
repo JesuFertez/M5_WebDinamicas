@@ -50,6 +50,7 @@ public class EditarCliente extends HttpServlet {
 	    	if(cliente == null) {
 	    		Usuario usu = usuarioDAO.obtenerUsuario(id);
 	    		cliente = new Cliente();
+	    		cliente.setId(id);
 	    		cliente.setNombre(usu.getNombre());
 	    		cliente.setTipo(TipoUsuario.Cliente);
 	    	}
@@ -67,6 +68,8 @@ public class EditarCliente extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
+		
+		
 		String contrasena = request.getParameter("contraseña");
 		String nombreUsuario = request.getParameter("nombreUsuario");
 		int id = Integer.valueOf(request.getParameter("idUsuario"));
@@ -83,14 +86,25 @@ public class EditarCliente extends HttpServlet {
 		int rut = Integer.valueOf(request.getParameter("rut"));
 
 		Cliente cliente = new Cliente(id,nombreUsuario,contrasena,nombres,apellidos,telefono,direccion,comuna,edad,rut);
+    
+		System.out.println(cliente);
+		String mensaje;
+		Boolean mostrarAlert = false;
+		
 		if(usuarioDAO.obtenerCliente(cliente.getId()) != null) {
 			usuarioDAO.actualizarCliente(cliente);
+			mensaje="El cliente se ha actualizado correctamente";
+			mostrarAlert= true;
 			System.out.println("El cliente se ha actualizado correctamente");
 		}else {
 			usuarioDAO.crearCliente(cliente);
+			mensaje="El cliente se ha ingresado correctamente";
+			mostrarAlert= true;
 			System.out.println("El cliente se ha ingresado correctamente");
 		}
-		response.sendRedirect(request.getContextPath() + "/ListadoUsuarios");
+		request.setAttribute("mostrarAlert", mostrarAlert);
+		request.setAttribute("mensaje", mensaje);
+		getServletContext().getRequestDispatcher("/views/listado-usuarios.jsp").forward(request, response);
 	}
 		
 }

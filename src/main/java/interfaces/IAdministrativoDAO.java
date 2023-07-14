@@ -7,4 +7,5 @@ public interface IAdministrativoDAO {
     public void actualizarAdministrativo(Usuario usuario);
     public int crearAdministrativo(Administrativo administrativo);
     public Administrativo obtenerAdministrativo(int id);
+    public Usuario obtenerUsuario(int id);
 }

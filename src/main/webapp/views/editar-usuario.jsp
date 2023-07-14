@@ -1,4 +1,4 @@
-<%@page import="java.sql.*" %>
+<%@page import="java.sql.*"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -41,7 +41,7 @@
 					</div>
 					<div class="col-md-6 mb-3">
 						<label for="contraseña" class="form-label">Contraseña</label> <input
-							type="text" class="form-control" name="contraseña" required>
+							type="text" class="form-control" name="contraseña" >
 					</div>
 					<div class="col-md-12 mb-3">
 						<label for="tipoLbl" class="form-label">Tipo</label> <select
@@ -92,15 +92,15 @@
 							<h3>Datos del administrativo</h3>
 							<div>
 								<label for="nombre" class="form-label">Nombre</label><input
-									type="text" class="form-control" name="nombre" required>
+									value="${usuario.nombreAdmin}" type="text" class="form-control" name="nombre" required>
 							</div>
 							<div>
 								<label for="area" class="form-label">Area</label><input
-									type="text" class="form-control" name="area" required>
+									value="${usuario.area}" type="text" class="form-control" name="area" required>
 							</div>
 							<div>
 								<label for="experienciaPrevia" class="form-label">Experiencia Previa</label><input
-									type="text" class="form-control" name="experienciaPrevia" required>
+									value="${usuario.experienciaPrevia}" type="text" class="form-control" name="experienciaPrevia" required>
 							</div>
 						</c:when>
 						<c:when test="${usuario.tipo eq 'Profesional'}">

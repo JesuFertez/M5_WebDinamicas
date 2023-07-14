@@ -7,4 +7,5 @@ public interface IProfesionalDAO {
     public void actualizarProfesional(Usuario usuario);
     public int crearProfesional(Profesional profesional);
     public Profesional obtenerProfesional(int id);
+    public Usuario obtenerUsuario(int id);
 }

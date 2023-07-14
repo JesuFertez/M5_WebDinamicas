@@ -36,20 +36,35 @@ public class EditarAdministrativo extends HttpServlet {
         if (session != null && session.getAttribute("usuario") != null) {
             int id = Integer.valueOf(request.getParameter("idRescatado").toString());
             Administrativo administrativo = administrativoDAO.obtenerAdministrativo(id);
-            request.setAttribute("administrativo", administrativo);
-            getServletContext().getRequestDispatcher("/views/editar-administrativo.jsp").forward(request, response);
+            System.out.println(administrativo);
+         
+            if(administrativo == null) {
+            	Usuario usu = administrativoDAO.obtenerUsuario(id);
+            	System.out.println(usu);
+            	administrativo = new Administrativo();
+            	administrativo.setId(id);
+            	administrativo.setNombre(usu.getNombre());
+            	administrativo.setContraseña(usu.getContraseña());
+            	administrativo.setTipo(TipoUsuario.Administrativo);
+            }
+            request.setAttribute("usuario", administrativo);
+            getServletContext().getRequestDispatcher("/views/editar-usuario.jsp").forward(request, response);
         } else {
             response.sendRedirect(request.getContextPath() + "/Login");
         }
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        int id = Integer.valueOf(request.getParameter("idAdministrativo"));
-        String nombre = request.getParameter("nombreAdministrativo");
+        
+    	String contrasena = request.getParameter("contraseña");
+		String nombreUsuario = request.getParameter("nombreUsuario");
+    	int id = Integer.valueOf(request.getParameter("idUsuario"));
+        String nombreAdmin = request.getParameter("nombre");
         String area = request.getParameter("area");
         String experienciaPrevia = request.getParameter("experienciaPrevia");
-
-        Administrativo administrativo = new Administrativo(id, "", "", nombre, area, experienciaPrevia);
+        
+        Administrativo administrativo = new Administrativo(id,nombreUsuario,contrasena, nombreAdmin, area, experienciaPrevia);
+       System.out.println(administrativo);
         if (administrativoDAO.obtenerAdministrativo(administrativo.getId()) != null) {
             administrativoDAO.actualizarAdministrativo(administrativo);
             System.out.println("El administrativo se ha actualizado correctamente");
@@ -57,6 +72,7 @@ public class EditarAdministrativo extends HttpServlet {
             administrativoDAO.crearAdministrativo(administrativo);
             System.out.println("El administrativo se ha ingresado correctamente");
         }
+        response.sendRedirect(request.getContextPath() + "/ListadoUsuarios");
     }
 }
 
