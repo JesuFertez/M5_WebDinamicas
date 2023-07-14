@@ -65,14 +65,22 @@ public class EditarAdministrativo extends HttpServlet {
         
         Administrativo administrativo = new Administrativo(id,nombreUsuario,contrasena, nombreAdmin, area, experienciaPrevia);
        System.out.println(administrativo);
+       String mensaje;
+       Boolean mostrarAlert = false;
         if (administrativoDAO.obtenerAdministrativo(administrativo.getId()) != null) {
             administrativoDAO.actualizarAdministrativo(administrativo);
             System.out.println("El administrativo se ha actualizado correctamente");
+			mensaje="El administrativo se ha actualizado correctamente";
+			mostrarAlert= true;
         } else {
             administrativoDAO.crearAdministrativo(administrativo);
             System.out.println("El administrativo se ha ingresado correctamente");
+			mensaje="El administrativo se ha actualizado correctamente";
+			mostrarAlert= true;
         }
-        response.sendRedirect(request.getContextPath() + "/ListadoUsuarios");
+		request.setAttribute("mostrarAlert", mostrarAlert);
+		request.setAttribute("mensaje", mensaje);
+		getServletContext().getRequestDispatcher("/views/listado-usuarios.jsp").forward(request, response);
     }
 }
 

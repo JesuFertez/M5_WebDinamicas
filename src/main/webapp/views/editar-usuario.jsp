@@ -107,15 +107,15 @@
 							<h3>Datos del profesional</h3>
 							<div>
 								<label for="nombre" class="form-label">Nombre</label><input
-									type="text" class="form-control" name="nombre" required>
+									value="${usuario.nombrePro}" type="text" class="form-control" name="nombre" required>
 							</div>
 							<div>
 								<label for="titulo" class="form-label">Título</label><input
-									type="text" class="form-control" name="titulo" required>
+									value="${usuario.titulo}" type="text" class="form-control" name="titulo" required>
 							</div>
 							<div>
 								<label for="fechaIngreso" class="form-label">Fecha de ingreso</label><input
-									type="text" class="form-control" name="fechaIngreso" required>
+									value="${usuario.obtenerFechaFormat()}" type="text" class="form-control" name="fechaIngreso" required>
 							</div>							
 						</c:when>
 						<c:otherwise>

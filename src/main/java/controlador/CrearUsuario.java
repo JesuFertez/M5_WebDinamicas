@@ -67,8 +67,12 @@ public class CrearUsuario extends HttpServlet {
 				usuarioDAO.crearUsuario(usuario);
 				request.setAttribute("mensaje", "Usuario creado correctamente");
 
-				// Redireccionar a web de exito
-				getServletContext().getRequestDispatcher("/views/exito.jsp").forward(request, response);
+				// Redireccionar al listado de usuarios
+				String mensaje="Usuario "+usuario.getTipo()+" creado con exito";
+				boolean mostrarAlert= true;
+				request.setAttribute("mostrarAlert", mostrarAlert);
+				request.setAttribute("mensaje", mensaje);
+				getServletContext().getRequestDispatcher("/views/listado-usuarios.jsp").forward(request, response);
 			} else {
 				getServletContext().getRequestDispatcher("/views/listado-usuarios.jsp").forward(request, response);
 			}

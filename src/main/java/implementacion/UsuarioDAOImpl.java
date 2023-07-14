@@ -103,15 +103,26 @@ public class UsuarioDAOImpl implements IUsuarioDAO {
 
 	@Override
 	public int actualizarUsuario(Usuario usu) {
-		String SQL_UPDATE =" UPDATE Usuarios SET nombre = ?, SET contrasena = ?, SET tipo = ? WHERE id = ?";
+		String SQL_UPDATE ;
+		Boolean validacion = usu.getContraseña()!= null && usu.getContraseña() != "" ;
+		if(validacion) {
+			SQL_UPDATE =" UPDATE Usuarios SET nombre = ?, contrasena = ?, tipo = ? WHERE id = ?";
+		} else {
+			SQL_UPDATE =" UPDATE Usuarios SET nombre = ?, tipo = ? WHERE id = ?";
+		}
 		int registros=0;
 		try {
 			Connection conn = Conexion.getConn();
 			PreparedStatement stmt = conn.prepareStatement(SQL_UPDATE);
 			stmt.setString(1,usu.getNombre());
-			stmt.setString(2,usu.getContraseña());
-			stmt.setString(3,usu.getTipo().toString());
-			stmt.setInt(4,usu.getId());
+			if(validacion) {
+				stmt.setString(2,usu.getContraseña());
+				stmt.setString(3,usu.getTipo().toString());
+				stmt.setInt(4,usu.getId());
+			}else {
+				stmt.setString(2,usu.getTipo().toString());
+				stmt.setInt(3,usu.getId());
+			}
 			
 			registros= stmt.executeUpdate();
 			
