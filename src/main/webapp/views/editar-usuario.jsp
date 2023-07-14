@@ -41,7 +41,7 @@
 					</div>
 					<div class="col-md-6 mb-3">
 						<label for="contraseña" class="form-label">Contraseña</label> <input
-							type="text" class="form-control" name="contraseña" required>
+							type="text" class="form-control" name="contraseña" >
 					</div>
 					<div class="col-md-12 mb-3">
 						<label for="tipoLbl" class="form-label">Tipo</label> <select
