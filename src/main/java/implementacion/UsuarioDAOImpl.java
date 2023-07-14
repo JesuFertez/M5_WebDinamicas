@@ -73,26 +73,33 @@ public class UsuarioDAOImpl implements IUsuarioDAO {
 
 	@Override
 	public Usuario obtenerUsuario(int id) {
-		String SQL_SELECT_FROM =" SELECT id, nombre, tipo from Usuarios WHERE id=";
-		Usuario usu=null;
-		
-		try {
-			Connection conn = Conexion.getConn();
-			Statement stmt =conn.createStatement();
-			ResultSet rs= stmt.executeQuery(SQL_SELECT_FROM+id);
-			
-			if(rs.next()) {
-				usu = new Usuario((int)rs.getInt(id), (String)rs.getString("nombre"), (TipoUsuario)TipoUsuario.parse(rs.getString("tipo")));
-			}
-			rs.close();
-			stmt.close();
-			conn.close();
-		} catch (SQLException e) {
-			
-			e.printStackTrace(System.out);
-		}
-		return usu;
+	    String SQL_SELECT = "SELECT id, nombre, contrasena, tipo FROM Usuarios WHERE id = ?";
+	    Usuario usuario = null;
+
+	    try {
+	        Connection conn = Conexion.getConn();
+	        PreparedStatement stmt = conn.prepareStatement(SQL_SELECT);
+	        stmt.setInt(1, id);
+	        ResultSet rs = stmt.executeQuery();
+
+	        if (rs.next()) {
+	            int usuarioId = rs.getInt("id");
+	            String nombre = rs.getString("nombre");
+	            String contraseña = rs.getString("contrasena");
+	            TipoUsuario tipo = TipoUsuario.parse(rs.getString("tipo"));
+
+	            usuario = new Usuario(usuarioId, nombre, contraseña, tipo);
+	        }
+
+	        rs.close();
+	        stmt.close();
+	    } catch (SQLException e) {
+	        e.printStackTrace(System.out);
+	    }
+
+	    return usuario;
 	}
+
 
 	@Override
 	public int actualizarUsuario(Usuario usu) {
