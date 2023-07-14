@@ -36,7 +36,7 @@
 				<form action="Editar${usuario.tipo}" class="row" method="post">
 					<div class="col-md-6 mb-3">
 						<label for="nombre" class="form-label">Nombre</label> <input
-							type="text" class="form-control" name="nombre"
+							type="text" class="form-control" name="nombreUsuario"
 							value="${usuario.nombre}" required>
 					</div>
 					<div class="col-md-6 mb-3">

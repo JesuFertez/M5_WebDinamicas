@@ -47,6 +47,12 @@ public class EditarCliente extends HttpServlet {
 			
 	    	int id = Integer.valueOf(request.getParameter("idRescatado").toString());
 			Cliente cliente = usuarioDAO.obtenerCliente(id);
+	    	if(cliente == null) {
+	    		Usuario usu = usuarioDAO.obtenerUsuario(id);
+	    		cliente = new Cliente();
+	    		cliente.setNombre(usu.getNombre());
+	    		cliente.setTipo(TipoUsuario.Cliente);
+	    	}
 			request.setAttribute("usuario", cliente);
 			getServletContext().getRequestDispatcher("/views/editar-usuario.jsp").forward(request, response);
 			
@@ -61,6 +67,8 @@ public class EditarCliente extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
+		String contrasena = request.getParameter("contraseña");
+		String nombreUsuario = request.getParameter("nombreUsuario");
 		int id = Integer.valueOf(request.getParameter("idUsuario"));
 		System.out.println(id);
 		String nombres = request.getParameter("nombres");
@@ -74,7 +82,7 @@ public class EditarCliente extends HttpServlet {
 		int edad = Integer.valueOf(request.getParameter("edad"));
 		int rut = Integer.valueOf(request.getParameter("rut"));
 
-		Cliente cliente = new Cliente(id,nombres,apellidos,telefono,direccion,comuna,edad,rut);
+		Cliente cliente = new Cliente(id,nombreUsuario,contrasena,nombres,apellidos,telefono,direccion,comuna,edad,rut);
 		if(usuarioDAO.obtenerCliente(cliente.getId()) != null) {
 			usuarioDAO.actualizarCliente(cliente);
 			System.out.println("El cliente se ha actualizado correctamente");

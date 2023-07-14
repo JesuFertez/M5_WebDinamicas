@@ -84,30 +84,38 @@ public class ClienteDAOImpl extends UsuarioDAOImpl implements IClienteDAO {
 
 
 	
-	public Cliente obtenerCliente (int id) {
-		String SQL_SELECT_FROM ="SELECT id, nombres, apellidos, telefono, direccion, comuna, edad, rut FROM Cliente WHERE id=";
-		Cliente cli=null;
-		Usuario usu = obtenerUsuario(id);
-		
-		try {
-			Connection conn = Conexion.getConn();
-			Statement stmt =conn.createStatement();
-			ResultSet rs= stmt.executeQuery(SQL_SELECT_FROM+id);
-			System.out.println("Ejecutando query ");
-			if(rs.next()) {
-				cli = new Cliente(rs.getInt(id),usu.getNombre(),usu.getContraseña(), rs.getString("nombres"),
-						 rs.getString("apellidos"), rs.getInt("telefono"), rs.getString("direccion"), rs.getString("comuna"),
-						 rs.getInt("edad"), rs.getInt("rut"));
-			}
-			rs.close();
-			stmt.close();
-			conn.close();
-		} catch (SQLException e) {
-			
-			e.printStackTrace(System.out);
-		}
-		return cli;
+	public Cliente obtenerCliente(int id) {
+	    String SQL_SELECT = "SELECT c.nombres, c.apellidos, c.telefono, c.direccion, c.comuna, c.edad, c.rut, u.nombre, u.contrasena " +
+	                        "FROM Cliente c " +
+	                        "JOIN Usuarios u ON c.id = u.id " +
+	                        "WHERE c.id = ?";
+	    Cliente cliente = null;
+
+	    try (Connection conn = Conexion.getConn();
+	         PreparedStatement stmt = conn.prepareStatement(SQL_SELECT)) {
+
+	        stmt.setInt(1, id);
+	        try (ResultSet rs = stmt.executeQuery()) {
+	            if (rs.next()) {
+	                String nombres = rs.getString("nombres");
+	                String apellidos = rs.getString("apellidos");
+	                int telefono = rs.getInt("telefono");
+	                String direccion = rs.getString("direccion");
+	                String comuna = rs.getString("comuna");
+	                int edad = rs.getInt("edad");
+	                int rut = rs.getInt("rut");
+	                String nombre = rs.getString("nombre");
+	                String contraseña = rs.getString("contrasena");
+	                cliente = new Cliente(id, nombre, contraseña, nombres, apellidos, telefono, direccion, comuna, edad, rut);
+	            }
+	        }
+	    } catch (SQLException e) {
+	        e.printStackTrace(System.out);
+	    }
+
+	    return cliente;
 	}
+
 	public int crearCliente(Cliente cliente) {
 		String SQL_INSERT = "INSERT INTO Cliente (id, nombres, apellidos, telefono, direccion, comuna, edad, rut)VALUES(?,?,?,?,?,?,?,?);";
 		
