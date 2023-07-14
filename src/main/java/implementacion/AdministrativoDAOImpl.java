@@ -75,9 +75,12 @@ public class AdministrativoDAOImpl extends UsuarioDAOImpl implements IAdministra
 
 
     public Administrativo obtenerAdministrativo(int id) {
-        String SQL_SELECT_FROM = "SELECT id, nombre, area, experienciaPrevia FROM Administrativo WHERE id = ?";
+        String SQL_SELECT_FROM = "SELECT a.nombre, a.area, a.experienciaPrevia "
+        		+ "FROM Administrativo a "
+        		+ "JOIN Usuarios u ON a.id = u.id "
+        		+ "WHERE a.id = ?";
+       
         Administrativo admin = null;
-        Usuario usu = obtenerUsuario(id);
 
         try {
             Connection conn = Conexion.getConn();
@@ -89,11 +92,11 @@ public class AdministrativoDAOImpl extends UsuarioDAOImpl implements IAdministra
                 String nombre = rs.getString("nombre");
                 String area = rs.getString("area");
                 String experienciaPrevia = rs.getString("experienciaPrevia");
-                admin = new Administrativo(id, usu.getNombre(), usu.getContraseña(), nombre, area, experienciaPrevia);
+                String nombreUsuario = rs.getString("nombreUsuario");
+                String contraseña = rs.getString("contraseña");
+                admin = new Administrativo(id,nombreUsuario,contraseña,nombre, area, experienciaPrevia);
             }
-            rs.close();
-            stmt.close();
-            conn.close();
+           
         } catch (SQLException e) {
             e.printStackTrace(System.out);
         }

@@ -68,6 +68,8 @@ public class EditarCliente extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
+		
+		
 		String contrasena = request.getParameter("contraseña");
 		String nombreUsuario = request.getParameter("nombreUsuario");
 		int id = Integer.valueOf(request.getParameter("idUsuario"));
@@ -84,8 +86,11 @@ public class EditarCliente extends HttpServlet {
 		int rut = Integer.valueOf(request.getParameter("rut"));
 
 		Cliente cliente = new Cliente(id,nombreUsuario,contrasena,nombres,apellidos,telefono,direccion,comuna,edad,rut);
+    
+		System.out.println(cliente);
 		String mensaje;
 		Boolean mostrarAlert = false;
+		
 		if(usuarioDAO.obtenerCliente(cliente.getId()) != null) {
 			usuarioDAO.actualizarCliente(cliente);
 			mensaje="El cliente se ha actualizado correctamente";
