@@ -96,7 +96,7 @@ public class UsuarioDAOImpl implements IUsuarioDAO {
 	    } catch (SQLException e) {
 	        e.printStackTrace(System.out);
 	    }
-
+	    System.out.println(usuario.toString());
 	    return usuario;
 	}
 

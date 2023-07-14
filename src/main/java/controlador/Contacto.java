@@ -43,6 +43,10 @@ public class Contacto extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		String nombre = request.getParameter("nombre");
+		String email = request.getParameter("email");
+		String mensaje = request.getParameter("mensaje");
+		System.out.println(nombre + "\n"+ email + "\n" + mensaje);
 		//Mensaje de exito
 		request.setAttribute("mensaje", "Mensaje recibido, te contactaremos por el correo proporcionado.");
 		//Redireccionando a la pagina de exito
