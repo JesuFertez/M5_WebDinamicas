@@ -25,7 +25,7 @@ public class AdministrativoDAOImpl extends UsuarioDAOImpl implements IAdministra
 	        try {
 	            Connection conn = Conexion.getConn();
 	            PreparedStatement stmt = conn.prepareStatement(SQL_UPDATE);
-	            stmt.setString(1, administrativo.getNombre());
+	            stmt.setString(1, administrativo.getNombreAdmin());
 	            stmt.setString(2, administrativo.getArea());
 	            stmt.setString(3, administrativo.getExperienciaPrevia());
 	            stmt.setInt(4, administrativo.getId());
@@ -44,7 +44,7 @@ public class AdministrativoDAOImpl extends UsuarioDAOImpl implements IAdministra
 	}
 
 	public List<Usuario> obtenerAdministrativos() {
-	    String SQL_SELECT = "SELECT id, nombre , area, experienciaPrevia FROM Usuario INNER JOIN Administrativo ON Usuarios.id = Administrativo.id WHERE tipo = 'Administrativo'";
+	    String SQL_SELECT = "SELECT id, nombre , area, experienciaPrevia FROM Usuarios INNER JOIN Administrativo ON Usuarios.id = Administrativo.id WHERE tipo = 'Administrativo'";
 	    List<Usuario> administrativos = new ArrayList<>();
 
 	    try {
@@ -75,10 +75,10 @@ public class AdministrativoDAOImpl extends UsuarioDAOImpl implements IAdministra
 
 
     public Administrativo obtenerAdministrativo(int id) {
-        String SQL_SELECT_FROM = "SELECT a.nombre, a.area, a.experienciaPrevia "
-        		+ "FROM Administrativo a "
-        		+ "JOIN Usuarios u ON a.id = u.id "
-        		+ "WHERE a.id = ?";
+        String SQL_SELECT_FROM = "SELECT a.nombre_a, a.area, a.experienciaPrevia, u.nombre, u.contrasena " +
+                "FROM Administrativo a " +
+                "JOIN Usuarios u ON a.id = u.id " +
+                "WHERE a.id = ?";
        
         Administrativo admin = null;
 
@@ -89,12 +89,12 @@ public class AdministrativoDAOImpl extends UsuarioDAOImpl implements IAdministra
             ResultSet rs = stmt.executeQuery();
 
             if (rs.next()) {
-                String nombre = rs.getString("nombre");
+                String nombreAdmin = rs.getString("nombre_a");
                 String area = rs.getString("area");
                 String experienciaPrevia = rs.getString("experienciaPrevia");
-                String nombreUsuario = rs.getString("nombreUsuario");
-                String contraseña = rs.getString("contraseña");
-                admin = new Administrativo(id,nombreUsuario,contraseña,nombre, area, experienciaPrevia);
+                String nombre = rs.getString("nombre");
+                String contraseña = rs.getString("contrasena");
+                admin = new Administrativo(id,nombre,contraseña,nombreAdmin, area, experienciaPrevia);
             }
            
         } catch (SQLException e) {
@@ -114,7 +114,7 @@ public class AdministrativoDAOImpl extends UsuarioDAOImpl implements IAdministra
             conn = Conexion.getConn();
             stmt = conn.prepareStatement(SQL_INSERT);
             stmt.setInt(1, administrativo.getId());
-            stmt.setString(2, administrativo.getNombre());
+            stmt.setString(2, administrativo.getNombreAdmin());
             stmt.setString(3, administrativo.getArea());
             stmt.setString(4, administrativo.getExperienciaPrevia());
             registros = stmt.executeUpdate();
