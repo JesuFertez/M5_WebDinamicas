@@ -12,4 +12,5 @@ public interface IUsuarioDAO {
 	public Usuario obtenerUsuario(int id);
 	public int actualizarUsuario(Usuario usu);
 	public int borrarUsuario(Usuario usu);
+	public Usuario obtenerUsuarioPorNombreYContraseña(String nombreUsuario, String contraseña);
 }
