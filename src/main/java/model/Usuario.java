@@ -14,6 +14,13 @@ public class Usuario {
 		this.id = id;
 		
 	}
+	
+	public Usuario(int id, String nombreUsuario) {
+		super();
+		this.id = id;
+		this.nombreUsuario=nombreUsuario;
+	}
+	
 	public Usuario(int id,TipoUsuario tipo) {
 		super();
 		this.id = id;

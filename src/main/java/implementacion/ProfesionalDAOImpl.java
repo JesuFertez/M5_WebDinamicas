@@ -48,11 +48,11 @@ public class ProfesionalDAOImpl extends UsuarioDAOImpl implements IProfesionalDA
 	    }
 	}
 	public List<Usuario> obtenerProfesionales() {
-	    String SQL_SELECT = "SELECT id, nombre_p, titulo, fechaIngreso FROM Usuario "
-	    		+ "INNER JOIN Profesional ON Usuarios.id = Profesional.id WHERE tipo = 'Profesional'";
+	    String SQL_SELECT = "SELECT u.id, u.nombre, p.nombre_p, p.titulo, p.fechaIngreso FROM Usuarios "
+	    		+ " AS u INNER JOIN Profesional AS p ON u.id = p.id WHERE tipo = 'Profesional'";
 	    List<Usuario> profesionales = new ArrayList<>();
 
-		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+		
 	    try {
 	        Connection conn = Conexion.getConn();
 	        PreparedStatement stmt = conn.prepareStatement(SQL_SELECT);
@@ -60,12 +60,13 @@ public class ProfesionalDAOImpl extends UsuarioDAOImpl implements IProfesionalDA
 
 	        while (rs.next()) {
 	            int id = rs.getInt("id");
-	            String nombre = rs.getString("nombre_p");
+	            String nombre = rs.getString("nombre");
+	            String nombreP = rs.getString("nombre_p");
 	            String titulo = rs.getString("titulo");
 	            LocalDate fechaIngreso = rs.getDate("fechaIngreso").toLocalDate();
-	    		fechaIngreso = LocalDate.parse(fechaIngreso.format(formatter),formatter);
-	            String nombreUsuario = rs.getString("nombre");
-	            Profesional profesional = new Profesional(id, nombreUsuario , "", nombre, titulo, fechaIngreso);
+	
+	            
+	            Profesional profesional = new Profesional(id, nombre, nombreP, titulo, fechaIngreso);
 	            profesionales.add(profesional);
 	        }
 	        rs.close();

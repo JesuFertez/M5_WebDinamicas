@@ -12,9 +12,18 @@ public class Profesional extends Usuario {
 	public Profesional() {
 	}
 
+	
+	public Profesional(int id, String nombreUsuario, String nombrePro, String titulo, LocalDate fechaIngreso) {
+		super(id, nombreUsuario);
+		this.nombrePro = nombrePro;
+		this.titulo = titulo;
+		this.fechaIngreso = fechaIngreso;
+	}
+
+
 	public Profesional(int id, String nombreUsuario, String contraseña, String nombre, String titulo,
 			LocalDate fechaIngreso) {
-		super(id, nombreUsuario, contraseña, TipoUsuario.Profesional);
+		super(id, nombreUsuario);
 		this.nombrePro = nombre;
 		this.titulo = titulo;
 		this.fechaIngreso = fechaIngreso;
@@ -44,8 +53,11 @@ public class Profesional extends Usuario {
 		this.fechaIngreso = fechaIngreso;
 	}
 	public String obtenerFechaFormat() {
-		DateTimeFormatter formatoSalida = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-        String fechaIngresoFormateada = fechaIngreso.format(formatoSalida);
+		String fechaIngresoFormateada = "";
+		if(fechaIngreso != null) {
+			DateTimeFormatter formatoSalida = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+			fechaIngresoFormateada = fechaIngreso.format(formatoSalida);
+		}
 		return fechaIngresoFormateada;
 	}
 	@Override

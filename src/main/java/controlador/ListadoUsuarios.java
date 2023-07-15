@@ -34,27 +34,31 @@ public class ListadoUsuarios extends HttpServlet {
 	}
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+	 *      response)
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		//Se obtiene la sesion actual
-				HttpSession session = request.getSession();
-				//validacion de usuario logeado
-			    if (session != null && session.getAttribute("usuario") != null) {
-			    	
-			    	UsuarioDAOImpl usuarioDAO = new UsuarioDAOImpl();
-			    	List<Usuario> listaUsuarios= usuarioDAO.obtenerUsuarios();
-					System.out.println("-Lista desplegada en listado-usuarios.jsp");
+		// Se obtiene la sesion actual
+		HttpSession session = request.getSession();
+		// validacion de usuario logeado
+		String nombreUsuario = (String) session.getAttribute("nombreUsuario");
+		String tipoUsuario = (String) session.getAttribute("tipoUsuario");
+		if (session != null && nombreUsuario != null &&  tipoUsuario.equals("Administrativo")) {
 
-			    	session.setAttribute("listaUsuarios", listaUsuarios);
-			    	
-			    	//Redireccionando a la vista para ver las capacitaciones
-			    	getServletContext().getRequestDispatcher("/views/listado-usuarios.jsp").forward(request, response);
-			    } else {
-			    	//redireccionando al login
-			    	response.sendRedirect(request.getContextPath() + "/Login");
-			    }
+			UsuarioDAOImpl usuarioDAO = new UsuarioDAOImpl();
+			List<Usuario> listaUsuarios = usuarioDAO.obtenerUsuarios();
+			System.out.println("-Lista desplegada en listado-usuarios.jsp");
+
+			session.setAttribute("listaUsuarios", listaUsuarios);
+
+			// Redireccionando a la vista para ver las capacitaciones
+			getServletContext().getRequestDispatcher("/views/listado-usuarios.jsp").forward(request, response);
+		} else {
+			// redireccionando al login
+			response.sendRedirect(request.getContextPath() + "/Login");
+		}
 	}
 
 	/**

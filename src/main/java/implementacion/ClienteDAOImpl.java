@@ -50,7 +50,8 @@ public class ClienteDAOImpl extends UsuarioDAOImpl implements IClienteDAO {
 
 
 	public List<Usuario> obtenerClientes() {
-	    String SQL_SELECT = "SELECT id, nombres, apellidos, telefono, direccion, comuna, edad, rut FROM Usuarios INNER JOIN Cliente ON Usuarios.id = Cliente.id WHERE tipo = 'Cliente'";
+	    String SQL_SELECT = "SELECT u.id, u.nombre, c.nombres, c.apellidos, c.telefono, c.direccion, c.comuna, c.edad, c.rut "
+	    		+ "FROM Usuarios AS u INNER JOIN Cliente AS c ON u.id = c.id WHERE tipo = 'Cliente'";
 	    List<Usuario> clientes = new ArrayList<>();
 
 	    try {
@@ -60,16 +61,16 @@ public class ClienteDAOImpl extends UsuarioDAOImpl implements IClienteDAO {
 
 	        while (rs.next()) {
 	            int id = rs.getInt("id");
-	            String nombres = rs.getString("nombres");
+	            String nombre = rs.getString("nombre");
+	            String nombres= rs.getString("nombres");
 	            String apellidos = rs.getString("apellidos");
 	            int telefono = rs.getInt("telefono");
 	            String direccion = rs.getString("direccion");
 	            String comuna = rs.getString("comuna");
 	            int edad = rs.getInt("edad");
 	            int rut = rs.getInt("rut");
-	            Usuario usuario = obtenerUsuario(id);
-	            String nombre = usuario.getNombre();
-	            Cliente cliente = new Cliente(id, nombre, "", nombres, apellidos, telefono, direccion, comuna, edad, rut);
+	        
+	            Cliente cliente = new Cliente(id, nombre, nombres, apellidos, telefono, direccion, comuna, edad, rut);
 	            clientes.add(cliente);
 	        }
 	        rs.close();

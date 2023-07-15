@@ -22,36 +22,42 @@ public class CrearUsuario extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private IUsuarioDAO usuarioDAO = new UsuarioDAOImpl();
 
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public CrearUsuario() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
-
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#HttpServlet()
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		
-		//Se obtiene la sesion actual
-				HttpSession session = request.getSession();
-				//validacion de usuario logeado
-			    if (session != null && session.getAttribute("usuario") != null) {
-					getServletContext().getRequestDispatcher("/views/crear-usuario.jsp").forward(request, response);
-			    } else {
-			    	//redireccionando al login
-			    	response.sendRedirect(request.getContextPath() + "/Login");
-			    }
+	public CrearUsuario() {
+		super();
+		// TODO Auto-generated constructor stub
 	}
 
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+	 *      response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		// TODO Auto-generated method stub
+
+		// Se obtiene la sesion actual
+		HttpSession session = request.getSession();
+		// validacion de usuario logeado
+		String nombreUsuario = (String) session.getAttribute("nombreUsuario");
+		String tipoUsuario = (String) session.getAttribute("tipoUsuario");
+		if (session != null && nombreUsuario != null && tipoUsuario.equals("Administrativo")) {
+
+			getServletContext().getRequestDispatcher("/views/crear-usuario.jsp").forward(request, response);
+		} else {
+			// redireccionando al login
+			response.sendRedirect(request.getContextPath() + "/Login");
+		}
+	}
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		try {
 			String nombre = request.getParameter("nombre");
@@ -68,8 +74,8 @@ public class CrearUsuario extends HttpServlet {
 				request.setAttribute("mensaje", "Usuario creado correctamente");
 
 				// Redireccionar al listado de usuarios
-				String mensaje="Usuario "+usuario.getTipo()+" creado con exito";
-				boolean mostrarAlert= true;
+				String mensaje = "Usuario " + usuario.getTipo() + " creado con exito";
+				boolean mostrarAlert = true;
 				request.setAttribute("mostrarAlert", mostrarAlert);
 				request.setAttribute("mensaje", mensaje);
 				getServletContext().getRequestDispatcher("/views/listado-usuarios.jsp").forward(request, response);

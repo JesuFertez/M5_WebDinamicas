@@ -12,7 +12,7 @@ public class Conexion {
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			
-			conn=DriverManager.getConnection("jdbc:mysql://localhost:3306/prevencion_riesgos","root","12345");
+			conn=DriverManager.getConnection("jdbc:mysql://localhost:3306/prevencion_riesgos","root","root");
 			
 			if(conn != null) {
 				System.out.println("Conexión lograda");

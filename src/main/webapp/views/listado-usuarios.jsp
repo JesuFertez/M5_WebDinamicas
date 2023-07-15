@@ -63,7 +63,7 @@
 										<td><c:out value="${usu.getNombre()}"></c:out></td>
 										<td><c:out value="${usu.getTipo()}"></c:out></td>
 										<td>
-											<!-- Enviar el ID del usuario al servlet EditarUsuario al hacer clic en el botón "Editar" -->
+											<!-- Enviar el ID del usuario al servlet EditarUsuario al hacer clic en el botÃ³n "Editar" -->
 											<form action="Editar${usu.getTipo()}" method="get">
 												<input type="hidden" name="idRescatado"
 													value="${usu.getId()}">
