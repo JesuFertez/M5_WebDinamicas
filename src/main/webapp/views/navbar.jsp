@@ -23,7 +23,7 @@
 	<!-- Logo y nombre del sitio -->
     <a class="navbar-brand" href="#">
 	    <i class="bi bi-fan"></i>
-	    <span class="text-ligth">WebDinámica</span>
+	    <span class="text-ligth">WebDinÃ¡mica</span>
 	</a>
 	<!-- boton del menu  -->
     <button class="navbar-toggler" type="button" 
@@ -54,13 +54,13 @@
 		    		<a class="nav-link dropdown-toggle ${navItem == 'Crear' ? 'active' : ''}"
 		    		id="navbarDropdown" role="button" data-bs-toggle="dropdown"  href="#">
 		    		<i class="bi bi-plus-circle"></i>
-		    		   Crear ${navText == 'Capacitacion' ? 'Capacitación': ''}
+		    		   Crear ${navText == 'Capacitacion' ? 'CapacitaciÃ³n': ''}
 		    		   		 ${navText == 'Usuario' ? 'Usuario': ''}</a>
 		           	<ul class="dropdown-menu bg-dark">
 		           		<c:if test="${tipoUsuario == 'Cliente' || tipoUsuario == 'Administrativo'}">
 			            	 <li>
 			            		 <a class="dropdown-item" href="CrearCapacitacion">
-			            		 <i class="bi bi-file-plus"></i>  Crear Capacitación</a>
+			            		 <i class="bi bi-file-plus"></i>  Crear CapacitaciÃ³n</a>
 			            	 </li>
 		           		</c:if>
 		           		<c:if test="${tipoUsuario == 'Administrativo'}">
@@ -128,7 +128,7 @@
 			    <ul class="dropdown-menu dropdown-menu-end bg-dark">
 			    	<li>
 			    		<a class="dropdown-item" href="CerrarSession">
-			    		<i class="bi bi-box-arrow-right"></i>   Cerrar Sesión</a>
+			    		<i class="bi bi-box-arrow-right"></i>   Cerrar SesiÃ³n</a>
 			    	</li>
 			    </ul>
 			</li>

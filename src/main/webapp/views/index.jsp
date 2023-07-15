@@ -24,7 +24,7 @@
 	<!-- Pagina de inicio -->
 	<div class="container">
 		<section class="mt-5">
-			<h1>¡Bienvenido a nuestro sitio web!</h1>
+			<h1>¡Bienvenido a Prevent!</h1>
 
 			<p>En nuestra compañía, nos dedicamos a brindar asesorías en
 				prevención de riesgos laborales, y hemos identificado un desafío
@@ -73,6 +73,7 @@
 
 		</section>
 	</div>
+	<%@ include file='footer.jsp'%>	
 	<!-- JavaScript Bootstrap -->
 	<script
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"

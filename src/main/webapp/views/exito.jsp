@@ -22,7 +22,7 @@
 	
 	<!-- Mensaje de exito -->
 	<div class="container">
-    	<div class="alert alert-success mt-4">
+    	<div class="alert alert-info mt-4">
 	    	<h4 class="alert-heading text-center fs-1">¡Éxito!</h4>
 			<p class="text-center">${mensaje}  
 			<!-- Validacion del mensaje --> 
