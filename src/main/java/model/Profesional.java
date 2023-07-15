@@ -12,6 +12,15 @@ public class Profesional extends Usuario {
 	public Profesional() {
 	}
 
+	
+	public Profesional(int id, String nombreUsuario, String nombrePro, String titulo, LocalDate fechaIngreso) {
+		super(id, nombreUsuario);
+		this.nombrePro = nombrePro;
+		this.titulo = titulo;
+		this.fechaIngreso = fechaIngreso;
+	}
+
+
 	public Profesional(int id, String nombreUsuario, String contraseña, String nombre, String titulo,
 			LocalDate fechaIngreso) {
 		super(id, nombreUsuario, contraseña, TipoUsuario.Profesional);

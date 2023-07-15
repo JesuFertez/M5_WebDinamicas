@@ -94,15 +94,15 @@
 			            	 	<i class="bi bi-people"></i>  Listar Usuarios</a>
 			            	 </li>
 			            	 <li>
-			            	 	<a class="dropdown-item" href="ListarClientes">
+			            	 	<a class="dropdown-item" href="ListarPorTipoUsuario?accion=listarCliente">
 			            	 	<i class="bi bi-people"></i>  Listar Clientes</a>
 			            	 </li>
 			            	  <li>
-			            	 	<a class="dropdown-item" href="ListarProfesionales">
+			            	 	<a class="dropdown-item" href="ListarPorTipoUsuario?accion=listarProfesional">
 			            	 	<i class="bi bi-people"></i>  Listar Profesionales</a>
 			            	 </li>
 			            	  <li>
-			            	 	<a class="dropdown-item" href="ListarAdministrativos">
+			            	 	<a class="dropdown-item" href="ListarPorTipoUsuario?accion=listarAdministrativo">
 			            	 	<i class="bi bi-people"></i>  Listar Administrativos</a>
 			            	 </li>
 		           		 </c:if>

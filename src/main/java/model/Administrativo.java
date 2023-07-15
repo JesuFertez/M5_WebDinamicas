@@ -14,6 +14,15 @@ public class Administrativo extends Usuario {
 	public Administrativo(int id, String nombreUsuario, String contraseña, TipoUsuario tipo) {
 		super(id,nombreUsuario,contraseña,tipo);
 	}
+	
+	public Administrativo(int id, String nombreUsuario,String nombreAdmin, String area, String experienciaPrevia) {
+		super(id,nombreUsuario);
+		this.nombreAdmin= nombreAdmin;
+		this.area = area;
+		this.experienciaPrevia = experienciaPrevia;
+		
+	}
+
 
 	public Administrativo(int id, String nombreUsuario,String contraseña,String nombreAdmin, String area, String experienciaPrevia) {
 		super(id, nombreUsuario,contraseña, TipoUsuario.Administrativo);
