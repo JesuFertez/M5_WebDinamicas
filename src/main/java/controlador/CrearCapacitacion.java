@@ -39,7 +39,11 @@ public class CrearCapacitacion extends HttpServlet {
 		// Se obtiene la sesion actual
 		HttpSession session = request.getSession();
 		// validacion de usuario logeado
-		if (session != null && session.getAttribute("usuario") != null) {
+		String nombreUsuario = (String)session.getAttribute("nombreUsuario");
+		String tipoUsuario = (String)session.getAttribute("tipoUsuario");
+		Boolean mostrarCampos = tipoUsuario.equals("Cliente") || tipoUsuario.equals("Administrativo");
+		if (session != null && nombreUsuario != null && mostrarCampos ) {
+
 			getServletContext().getRequestDispatcher("/views/crearCapacitacion.jsp").forward(request, response);
 		} else {
 			// redireccionando al login

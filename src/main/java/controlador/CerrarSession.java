@@ -29,8 +29,8 @@ public class CerrarSession extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
 		// validacion de usuario logeado para desconectarlo
-		if (session != null && session.getAttribute("usuario") != null) {
-			System.out.println("** Usuario "+session.getAttribute("usuario")+" desconectado");
+		if (session != null && session.getAttribute("nombreUsuario") != null) {
+			System.out.println("** Usuario "+session.getAttribute("nombreUsuario")+" desconectado");
 			session.invalidate();
 		}
 		getServletContext().getRequestDispatcher("/views/login.jsp").forward(request, response);
