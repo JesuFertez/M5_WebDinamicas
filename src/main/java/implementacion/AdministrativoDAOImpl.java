@@ -44,7 +44,10 @@ public class AdministrativoDAOImpl extends UsuarioDAOImpl implements IAdministra
 	}
 
 	public List<Usuario> obtenerAdministrativos() {
-	    String SQL_SELECT = "SELECT id, nombre_a , area, experienciaPrevia FROM Usuarios INNER JOIN Administrativo ON Usuarios.id = Administrativo.id WHERE tipo = 'Administrativo'";
+	    String SQL_SELECT = "SELECT a.id, u.nombre, a.nombre_a, a.area, a.experienciaPrevia FROM Usuarios AS u \r\n"
+	    		+ "INNER JOIN Administrativo as a ON u.id = a.id \r\n"
+	    		+ "WHERE tipo = 'Administrativo'";
+	    
 	    List<Usuario> administrativos = new ArrayList<>();
 
 	    try {
@@ -54,13 +57,12 @@ public class AdministrativoDAOImpl extends UsuarioDAOImpl implements IAdministra
 
 	        while (rs.next()) {
 	            int id = rs.getInt("id");
-	            String nombre = rs.getString("nombre");
+	            String nombreUsuario = rs.getString("nombre");
+	            String nombreAdmin = rs.getString("nombre_a");
 	            String area = rs.getString("area");
 	            String experienciaPrevia = rs.getString("experienciaPrevia");
-	            Usuario usuario = obtenerUsuario(id);
-	            String nombreUsuario = usuario.getNombre();
 	            
-	            Administrativo administrativo = new Administrativo(id, nombreUsuario ,"", nombre, area, experienciaPrevia);
+	            Administrativo administrativo = new Administrativo(id, nombreUsuario , nombreAdmin, area, experienciaPrevia);
 	            administrativos.add(administrativo);
 	        }
 	        rs.close();

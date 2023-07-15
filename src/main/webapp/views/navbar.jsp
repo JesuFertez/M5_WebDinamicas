@@ -67,7 +67,10 @@
 		    		id="navbarDropdown" role="button" data-bs-toggle="dropdown"  href="#">
 		    		<i class="bi bi-card-list"></i>
 		    		   Listar ${navText == 'Capacitaciones' ? 'Capacitaciones' : ''}
-		    		   		 ${navText == 'Usuarios' ? 'Usuarios': ''}</a>
+		    		   		 ${navText == 'Usuarios' ? 'Usuarios': ''}
+		    		   		 ${navText == 'Clientes' ? 'Clientes': ''}
+		    		   		 ${navText == 'Profesionales' ? 'Profesionales': ''}
+		    		   		 ${navText == 'Administrativos' ? 'Administrativos': ''}</a>
 		           	<ul class="dropdown-menu bg-dark">
 		            	 <li>
 		            	 	<a class="dropdown-item" href="ListarCapacitaciones">
@@ -78,15 +81,15 @@
 		            	 	<i class="bi bi-people"></i>  Listar Usuarios</a>
 		            	 </li>
 		            	 <li>
-		            	 	<a class="dropdown-item" href="ListarClientes">
+		            	 	<a class="dropdown-item" href="ListarPorTipoUsuario?accion=listarCliente">
 		            	 	<i class="bi bi-people"></i>  Listar Clientes</a>
 		            	 </li>
 		            	  <li>
-		            	 	<a class="dropdown-item" href="ListarProfesionales">
+		            	 	<a class="dropdown-item" href="ListarPorTipoUsuario?accion=listarPresional">
 		            	 	<i class="bi bi-people"></i>  Listar Profesionales</a>
 		            	 </li>
 		            	  <li>
-		            	 	<a class="dropdown-item" href="ListarAdministrativos">
+		            	 	<a class="dropdown-item" href="ListarPorTipoUsuario?accion=listarAdministrativo">
 		            	 	<i class="bi bi-people"></i>  Listar Administrativos</a>
 		            	 </li>
 		           	</ul>
