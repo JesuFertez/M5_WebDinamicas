@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Listado de usuarios</title>
+<title>Listado de Clientes</title>
 <!-- CSS del proyecto -->
 <link rel="stylesheet" href="../css/estilos.css">
 <!-- CSS Bootstrap -->
