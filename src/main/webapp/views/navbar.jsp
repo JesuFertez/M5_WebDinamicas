@@ -77,6 +77,18 @@
 		            	 	<a class="dropdown-item" href="ListadoUsuarios">
 		            	 	<i class="bi bi-people"></i>  Listar Usuarios</a>
 		            	 </li>
+		            	 <li>
+		            	 	<a class="dropdown-item" href="ListarClientes">
+		            	 	<i class="bi bi-people"></i>  Listar Clientes</a>
+		            	 </li>
+		            	  <li>
+		            	 	<a class="dropdown-item" href="ListarProfesionales">
+		            	 	<i class="bi bi-people"></i>  Listar Profesionales</a>
+		            	 </li>
+		            	  <li>
+		            	 	<a class="dropdown-item" href="ListarAdministrativos">
+		            	 	<i class="bi bi-people"></i>  Listar Administrativos</a>
+		            	 </li>
 		           	</ul>
 		    	</li>
 		      </c:when>
