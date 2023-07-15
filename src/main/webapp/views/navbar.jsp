@@ -6,15 +6,16 @@
     
     <%@page import="model.Usuario"%>
 <head>
-	<!-- CSS PROPIO -->
-	<link rel="stylesheet" href="../css/estilos.css">
 	<!-- Iconos Bootstrap -->
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+	<!-- CSS PROPIO -->
+	<link rel="stylesheet" href="../css/estilos.css">
 </head>
 <header>
 <!-- Variables JSTL -->
-<c:set var="nombreUsuario" value="${sessionScope.usuario}" />
+<c:set var="nombreUsuario" value="${sessionScope.nombreUsuario}" />
 <c:set var="ingreso" value="${not empty sessionScope.ingreso and sessionScope.ingreso}" />
+<c:set var="tipoUsuario" value="${sessionScope.tipoUsuario}" />
 
 <!-- Navbar del sitio -->
 <nav class="navbar bg-dark  navbar-expand-lg bg-body-tertiary " data-bs-theme="dark">
@@ -41,10 +42,14 @@
 	    	<!-- Elementos disponibles solo cuando exista una sesion iniciada -->
 	    	<c:choose>
 	    	  <c:when test="${ingreso}">
-		    	<li class="nav-item ms-2">
-		    		<a class="nav-link ${navItem == 'Contacto' ? 'active' : ''}" href="Contacto">
-		    		<i class="bi bi-envelope-at"></i>   Contacto</a>
-		    	</li>
+	    	  
+		    	<c:if test="${tipoUsuario == 'Cliente'}">
+			    	<li class="nav-item ms-2">
+			    		<a class="nav-link ${navItem == 'Contacto' ? 'active' : ''}" href="Contacto">
+			    		<i class="bi bi-envelope-at"></i>   Contacto</a>
+			    	</li>
+		    	</c:if>
+		    	
 		    	<li class="nav-item dropdown ms-2">
 		    		<a class="nav-link dropdown-toggle ${navItem == 'Crear' ? 'active' : ''}"
 		    		id="navbarDropdown" role="button" data-bs-toggle="dropdown"  href="#">
@@ -52,14 +57,18 @@
 		    		   Crear ${navText == 'Capacitacion' ? 'Capacitación': ''}
 		    		   		 ${navText == 'Usuario' ? 'Usuario': ''}</a>
 		           	<ul class="dropdown-menu bg-dark">
-		            	 <li>
-		            		 <a class="dropdown-item" href="CrearCapacitacion">
-		            		 <i class="bi bi-file-plus"></i>  Crear Capacitación</a>
-		            	 </li>
-		            	 <li>
-			            	 <a class="dropdown-item" href="CrearUsuario">
-			            	 <i class="bi bi-person-plus"></i>  Crear Usuario</a>
-		            	 </li>		            	 		            	
+		           		<c:if test="${tipoUsuario == 'Cliente' || tipoUsuario == 'Administrativo'}">
+			            	 <li>
+			            		 <a class="dropdown-item" href="CrearCapacitacion">
+			            		 <i class="bi bi-file-plus"></i>  Crear Capacitación</a>
+			            	 </li>
+		           		</c:if>
+		           		<c:if test="${tipoUsuario == 'Administrativo'}">
+			            	 <li>
+				            	 <a class="dropdown-item" href="CrearUsuario">
+				            	 <i class="bi bi-person-plus"></i>  Crear Usuario</a>
+			            	 </li>	
+		           		</c:if>	            	 		            	
 		           	</ul>
 		    	</li>
 		    	<li class="nav-item dropdown ms-2">
@@ -72,26 +81,31 @@
 		    		   		 ${navText == 'Profesionales' ? 'Profesionales': ''}
 		    		   		 ${navText == 'Administrativos' ? 'Administrativos': ''}</a>
 		           	<ul class="dropdown-menu bg-dark">
-		            	 <li>
-		            	 	<a class="dropdown-item" href="ListarCapacitaciones">
-		            	 	<i class="bi bi-files"></i>  Listar Capacitaciones</a>
-		            	 </li>
-		            	 <li>
-		            	 	<a class="dropdown-item" href="ListadoUsuarios">
-		            	 	<i class="bi bi-people"></i>  Listar Usuarios</a>
-		            	 </li>
-		            	 <li>
-		            	 	<a class="dropdown-item" href="ListarPorTipoUsuario?accion=listarCliente">
-		            	 	<i class="bi bi-people"></i>  Listar Clientes</a>
-		            	 </li>
-		            	  <li>
-		            	 	<a class="dropdown-item" href="ListarPorTipoUsuario?accion=listarPresional">
-		            	 	<i class="bi bi-people"></i>  Listar Profesionales</a>
-		            	 </li>
-		            	  <li>
-		            	 	<a class="dropdown-item" href="ListarPorTipoUsuario?accion=listarAdministrativo">
-		            	 	<i class="bi bi-people"></i>  Listar Administrativos</a>
-		            	 </li>
+		           		 <c:if test="${tipoUsuario == 'Administrativo'|| tipoUsuario == 'Cliente'}">
+			            	 <li>
+			            	 	<a class="dropdown-item" href="ListarCapacitaciones">
+			            	 	<i class="bi bi-files"></i>  Listar Capacitaciones</a>
+			            	 </li>
+		           		 </c:if>
+		           		 
+		           		 <c:if test="${tipoUsuario == 'Administrativo'}">
+			            	 <li>
+			            	 	<a class="dropdown-item" href="ListadoUsuarios">
+			            	 	<i class="bi bi-people"></i>  Listar Usuarios</a>
+			            	 </li>
+			            	 <li>
+			            	 	<a class="dropdown-item" href="ListarPorTipoUsuario?accion=listarCliente">
+			            	 	<i class="bi bi-people"></i>  Listar Clientes</a>
+			            	 </li>
+			            	  <li>
+			            	 	<a class="dropdown-item" href="ListarPorTipoUsuario?accion=listarProfesional">
+			            	 	<i class="bi bi-people"></i>  Listar Profesionales</a>
+			            	 </li>
+			            	  <li>
+			            	 	<a class="dropdown-item" href="ListarPorTipoUsuario?accion=listarAdministrativo">
+			            	 	<i class="bi bi-people"></i>  Listar Administrativos</a>
+			            	 </li>
+		           		 </c:if>
 		           	</ul>
 		    	</li>
 		      </c:when>

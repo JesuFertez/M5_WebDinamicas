@@ -31,9 +31,14 @@ public class EditarAdministrativo extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        HttpSession session = request.getSession();
+		
+		// Se obtiene la sesion actual
+		HttpSession session = request.getSession();
+		// validacion de usuario logeado
+		String nombreUsuario = (String)session.getAttribute("nombreUsuario");
+		String tipoUsuario = (String)session.getAttribute("tipoUsuario");
+		if (session != null && nombreUsuario != null && tipoUsuario.equals("Administrativo") ) {
 
-        if (session != null && session.getAttribute("usuario") != null) {
             int id = Integer.valueOf(request.getParameter("idRescatado").toString());
             Administrativo administrativo = administrativoDAO.obtenerAdministrativo(id);
             System.out.println(administrativo);

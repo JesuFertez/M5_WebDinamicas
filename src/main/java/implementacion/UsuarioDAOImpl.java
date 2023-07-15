@@ -93,6 +93,7 @@ public class UsuarioDAOImpl implements IUsuarioDAO {
 
 	        rs.close();
 	        stmt.close();
+            conn.close();
 	    } catch (SQLException e) {
 	        e.printStackTrace(System.out);
 	    }
@@ -156,5 +157,35 @@ public class UsuarioDAOImpl implements IUsuarioDAO {
 		
 		return registros;
 	}
+	public Usuario obtenerUsuarioPorNombreYContraseña(String nombreUsuario, String contraseña) {
+        String consulta = "SELECT * FROM Usuarios WHERE nombre = ? AND contrasena = ?";
+        PreparedStatement statement = null;
+        ResultSet resultSet = null;
+        Usuario usuario = null;
+
+        try {
+			Connection conn = Conexion.getConn();
+            statement = conn.prepareStatement(consulta);
+            statement.setString(1, nombreUsuario);
+            statement.setString(2, contraseña);
+            resultSet = statement.executeQuery();
+
+            if (resultSet.next()) {
+                // Construir el objeto Usuario a partir de los datos obtenidos de la base de datos
+                usuario = new Usuario();
+                usuario.setNombre(resultSet.getString("nombre"));
+                usuario.setContraseña(resultSet.getString("contrasena"));
+                usuario.setTipo(TipoUsuario.parse(resultSet.getString("tipo")));
+            }
+            resultSet.close();
+            statement.close();
+            conn.close();
+        } catch (SQLException e) {
+            // Manejar cualquier excepción de SQL
+            e.printStackTrace();
+        }
+
+        return usuario;
+    }
 
 }

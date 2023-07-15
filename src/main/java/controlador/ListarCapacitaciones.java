@@ -40,10 +40,11 @@ public class ListarCapacitaciones extends HttpServlet {
 			throws ServletException, IOException {
 
 		// Se obtiene la sesion actual
-		
 		HttpSession session = request.getSession();
 		// validacion de usuario logeado
-		if (session != null && session.getAttribute("usuario") != null) {
+		String nombreUsuario = (String)session.getAttribute("nombreUsuario");
+		String tipoUsuario = (String)session.getAttribute("tipoUsuario");
+		if (session != null && nombreUsuario != null && (tipoUsuario.equals("Cliente") || tipoUsuario.equals("Administrativo") )) {
 
 			CapacitacionDAOImpl capacitacionDAO = new CapacitacionDAOImpl(); // Obtenemos la lista desde el DAO
 			List<Capacitacion> listaCapacitaciones = capacitacionDAO.obtenerCapacitaciones();

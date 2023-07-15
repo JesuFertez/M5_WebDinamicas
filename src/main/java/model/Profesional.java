@@ -53,8 +53,11 @@ public class Profesional extends Usuario {
 		this.fechaIngreso = fechaIngreso;
 	}
 	public String obtenerFechaFormat() {
-		DateTimeFormatter formatoSalida = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-        String fechaIngresoFormateada = fechaIngreso.format(formatoSalida);
+		String fechaIngresoFormateada = "";
+		if(fechaIngreso != null) {
+			DateTimeFormatter formatoSalida = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+			fechaIngresoFormateada = fechaIngreso.format(formatoSalida);
+		}
 		return fechaIngresoFormateada;
 	}
 	@Override

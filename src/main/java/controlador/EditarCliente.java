@@ -39,12 +39,14 @@ public class EditarCliente extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		
-		//Se obtiene la sesion actual
-		HttpSession session = request.getSession();
 		
-		//validacion de usuario logeado
-	    if (session != null && session.getAttribute("usuario") != null) {
-			
+		// Se obtiene la sesion actual
+		HttpSession session = request.getSession();
+		// validacion de usuario logeado
+		String nombreUsuario = (String)session.getAttribute("nombreUsuario");
+		String tipoUsuario = (String)session.getAttribute("tipoUsuario");
+		if (session != null && nombreUsuario != null && tipoUsuario.equals("Administrativo") ) {
+	
 	    	int id = Integer.valueOf(request.getParameter("idRescatado").toString());
 			Cliente cliente = usuarioDAO.obtenerCliente(id);
 	    	if(cliente == null) {

@@ -42,7 +42,14 @@ public class ListarPorTipoUsuario extends HttpServlet {
 		HttpSession session = request.getSession();
 		String accion = request.getParameter("accion");
 
-		if (session != null && session.getAttribute("usuario") != null) {
+		// validacion de usuario logeado
+		String nombreUsuario = (String)session.getAttribute("nombreUsuario");
+		String tipoUsuario = (String)session.getAttribute("tipoUsuario");
+		Boolean mostrarCampos = tipoUsuario.equals("Cliente") || tipoUsuario.equals("Administrativo");
+		
+		
+		if (session != null  && nombreUsuario != null && mostrarCampos) {
+			
 			if (accion != null) {
 				switch (accion) {
 
@@ -54,7 +61,7 @@ public class ListarPorTipoUsuario extends HttpServlet {
 					getServletContext().getRequestDispatcher("/views/listado-clientes.jsp").forward(request, response);
 					break;
 
-				case "listarPresional":
+				case "listarProfesional":
 					System.out.println("Listare profesionales");
 					List<Usuario>listaProf= iProf.obtenerProfesionales();
 					session.setAttribute("listaProf", listaProf);
