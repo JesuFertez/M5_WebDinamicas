@@ -23,7 +23,7 @@
 	<!-- Logo y nombre del sitio -->
     <a class="navbar-brand" href="#">
 	    <i class="bi bi-fan"></i>
-	    <span class="text-ligth">WebDinámica</span>
+	    <span class="text-ligth">Prevent</span>
 	</a>
 	<!-- boton del menu  -->
     <button class="navbar-toggler" type="button" 
